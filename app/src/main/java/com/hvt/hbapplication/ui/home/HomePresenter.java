@@ -12,5 +12,4 @@ public class HomePresenter extends BasePresenter<HomeView> {
     public HomePresenter(ApiClient apiClient) {
         super(apiClient);
     }
-
 }

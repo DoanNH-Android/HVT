@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_flag"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="6dp"
+            android:scaleType="fitXY"
+            tools:src="@drawable/flag" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/frame" />
+    </FrameLayout>
+
+    <com.hvt.hbapplication.widget.CustomFontTextView
+        android:id="@+id/tv_title_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:textSize="12sp"
+        tools:text="Dân tộc Mường" />
+</LinearLayout>
