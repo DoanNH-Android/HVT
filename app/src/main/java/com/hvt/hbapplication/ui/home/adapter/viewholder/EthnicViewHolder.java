@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseViewHolder;
-import com.hvt.hbapplication.ui.model.EthnicCommunity;
+import com.hvt.hbapplication.model.EthnicCommunity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

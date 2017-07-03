@@ -1,4 +1,4 @@
-package com.hvt.hbapplication.ui.model;
+package com.hvt.hbapplication.model;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package com.hvt.hbapplication.ui.detail;
 
 import com.hvt.hbapplication.ui.BaseView;
-import com.hvt.hbapplication.ui.model.EthnicCommunity;
+import com.hvt.hbapplication.model.EthnicCommunity;
 
 /**
  * Created by Admin on 27-Jun-17.

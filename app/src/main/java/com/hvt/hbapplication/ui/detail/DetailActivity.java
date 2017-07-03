@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseActivity;
-import com.hvt.hbapplication.ui.model.EthnicCommunity;
+import com.hvt.hbapplication.model.EthnicCommunity;
 
 import butterknife.BindView;
 

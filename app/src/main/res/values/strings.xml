@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_population">Dân số</string>
+    <string name="detail_resident_area">Phân bố dân cư</string>
+    <string name="detail_introduction">Giới thiệu</string>
+    <string name="detail_more_information">Thêm thông tin</string>
 </resources>

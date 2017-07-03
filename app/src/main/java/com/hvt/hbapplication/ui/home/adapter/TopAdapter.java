@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.ui.model.EthnicCommunity;
+import com.hvt.hbapplication.model.EthnicCommunity;
 
 import java.util.ArrayList;
 

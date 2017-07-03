@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.home.adapter.GroupAdapter;
-import com.hvt.hbapplication.ui.model.GroupEthnicCommunity;
+import com.hvt.hbapplication.model.GroupEthnicCommunity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.home.adapter.viewholder.GroupEthnicViewHolder;
 import com.hvt.hbapplication.ui.home.adapter.viewholder.TopEthnicViewHolder;
-import com.hvt.hbapplication.ui.model.EthnicCommunity;
-import com.hvt.hbapplication.ui.model.GroupEthnicCommunity;
+import com.hvt.hbapplication.model.EthnicCommunity;
+import com.hvt.hbapplication.model.GroupEthnicCommunity;
 
 import java.util.ArrayList;
 
