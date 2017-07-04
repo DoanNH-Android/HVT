@@ -6,39 +6,32 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Admin on 27-Jun-17.
  */
 
 public class EthnicCommunity implements Parcelable {
 
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("teaser_url")
     @Expose
     private String teaserUrl;
     @SerializedName("background_url")
     @Expose
     private String backgroundUrl;
-    @SerializedName("name")
+    @SerializedName("folk_translation")
     @Expose
-    private String name;
-    @SerializedName("introduction")
-    @Expose
-    private String introduction;
-    @SerializedName("population")
-    @Expose
-    private String population;
-    @SerializedName("residence_area")
-    @Expose
-    private String residenceArea;
-    @SerializedName("community_organization")
-    @Expose
-    private String communityOrganization;
-    @SerializedName("feature_translations")
-    @Expose
-    private List<FeatureTranslation> featureTranslations = null;
+    private FolkTranslation folkTranslation;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTeaserUrl() {
         return teaserUrl;
@@ -56,52 +49,12 @@ public class EthnicCommunity implements Parcelable {
         this.backgroundUrl = backgroundUrl;
     }
 
-    public String getName() {
-        return name;
+    public FolkTranslation getFolkTranslation() {
+        return folkTranslation;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public String getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(String population) {
-        this.population = population;
-    }
-
-    public String getResidenceArea() {
-        return residenceArea;
-    }
-
-    public void setResidenceArea(String residenceArea) {
-        this.residenceArea = residenceArea;
-    }
-
-    public String getCommunityOrganization() {
-        return communityOrganization;
-    }
-
-    public void setCommunityOrganization(String communityOrganization) {
-        this.communityOrganization = communityOrganization;
-    }
-
-    public List<FeatureTranslation> getFeatureTranslations() {
-        return featureTranslations;
-    }
-
-    public void setFeatureTranslations(List<FeatureTranslation> featureTranslations) {
-        this.featureTranslations = featureTranslations;
+    public void setFolkTranslation(FolkTranslation folkTranslation) {
+        this.folkTranslation = folkTranslation;
     }
 
 
@@ -112,29 +65,20 @@ public class EthnicCommunity implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
         dest.writeString(this.teaserUrl);
         dest.writeString(this.backgroundUrl);
-        dest.writeString(this.name);
-        dest.writeString(this.introduction);
-        dest.writeString(this.population);
-        dest.writeString(this.residenceArea);
-        dest.writeString(this.communityOrganization);
-        dest.writeList(this.featureTranslations);
+        dest.writeParcelable(this.folkTranslation, flags);
     }
 
     public EthnicCommunity() {
     }
 
     protected EthnicCommunity(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
         this.teaserUrl = in.readString();
         this.backgroundUrl = in.readString();
-        this.name = in.readString();
-        this.introduction = in.readString();
-        this.population = in.readString();
-        this.residenceArea = in.readString();
-        this.communityOrganization = in.readString();
-        this.featureTranslations = new ArrayList<FeatureTranslation>();
-        in.readList(this.featureTranslations, FeatureTranslation.class.getClassLoader());
+        this.folkTranslation = in.readParcelable(FolkTranslation.class.getClassLoader());
     }
 
     public static final Creator<EthnicCommunity> CREATOR = new Creator<EthnicCommunity>() {
