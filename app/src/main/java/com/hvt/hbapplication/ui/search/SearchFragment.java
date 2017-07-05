@@ -21,6 +21,16 @@ public class SearchFragment extends BaseFragment {
     }
 
     @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
     public int getLayoutID() {
         return R.layout.fragment_search;
     }

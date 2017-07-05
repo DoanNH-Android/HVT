@@ -23,7 +23,7 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicCommunit
     @BindView(R.id.vp_top)
     public ViewPager vpEthnic;
 
-    @BindView(R.id.vp_top)
+    @BindView(R.id.indicator)
     public CircleIndicator indicator;
 
     public TopAdapter topAdapter;
