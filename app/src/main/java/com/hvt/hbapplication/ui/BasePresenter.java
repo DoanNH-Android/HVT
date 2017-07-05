@@ -3,10 +3,6 @@ package com.hvt.hbapplication.ui;
 
 import com.hvt.hbapplication.network.ApiClient;
 
-/**
- * Created by Hado on 5/22/17.
- */
-
 public abstract class BasePresenter<V extends BaseView> {
 
     protected ApiClient apiClient;

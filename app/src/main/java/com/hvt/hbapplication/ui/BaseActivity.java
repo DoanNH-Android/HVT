@@ -13,10 +13,6 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Hado on 5/22/17.
- */
-
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
     private Unbinder mUnBinder;

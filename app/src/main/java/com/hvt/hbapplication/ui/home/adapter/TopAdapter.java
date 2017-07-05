@@ -13,9 +13,6 @@ import com.hvt.hbapplication.model.EthnicCommunity;
 
 import java.util.ArrayList;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
 
 public class TopAdapter extends PagerAdapter {
 

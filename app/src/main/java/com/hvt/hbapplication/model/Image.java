@@ -6,10 +6,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Admin on 03-Jul-17.
- */
-
 public class Image implements Parcelable {
 
     @SerializedName("image_url")

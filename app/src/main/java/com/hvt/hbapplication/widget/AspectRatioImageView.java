@@ -4,10 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-/**
- * Created by Hado on 6/29/17.
- */
-
 public class AspectRatioImageView extends AppCompatImageView {
 
     public AspectRatioImageView(Context context, AttributeSet attrs) {

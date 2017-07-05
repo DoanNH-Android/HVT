@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 
 import butterknife.Unbinder;
 
-/**
- * Created by Admin on 26-Jun-17.
- */
-
 public abstract class BaseFragment extends Fragment implements BaseView {
 
     private Unbinder mUnBinder;

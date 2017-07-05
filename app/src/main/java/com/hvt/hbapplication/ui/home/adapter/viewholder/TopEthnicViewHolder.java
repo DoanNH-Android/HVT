@@ -14,10 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.relex.circleindicator.CircleIndicator;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
-
 public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicCommunity>> {
 
     @BindView(R.id.vp_top)

@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hvt.hbapplication.R;
+import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.home.adapter.viewholder.EthnicViewHolder;
-import com.hvt.hbapplication.model.EthnicCommunity;
 
 import java.util.ArrayList;
 
@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class GroupAdapter extends RecyclerView.Adapter<EthnicViewHolder> {
 
-    public ArrayList<EthnicCommunity> ethnicCommunities;
+    public ArrayList<EthnicPreview> ethnicCommunities;
 
-    public GroupAdapter(ArrayList<EthnicCommunity> ethnicCommunities) {
+    public GroupAdapter(ArrayList<EthnicPreview> ethnicCommunities) {
         this.ethnicCommunities = ethnicCommunities;
     }
 

@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by Admin on 03-Jul-17.
- */
 
 public class FeatureTranslation implements Parcelable {
 

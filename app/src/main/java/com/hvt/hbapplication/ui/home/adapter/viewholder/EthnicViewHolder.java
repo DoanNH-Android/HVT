@@ -4,18 +4,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hvt.hbapplication.R;
+import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.BaseViewHolder;
-import com.hvt.hbapplication.model.EthnicCommunity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
-
-public class EthnicViewHolder extends BaseViewHolder<EthnicCommunity> {
+public class EthnicViewHolder extends BaseViewHolder<EthnicPreview> {
 
     @BindView(R.id.tv_title_name)
     public TextView tvEthnicName;
@@ -28,8 +25,9 @@ public class EthnicViewHolder extends BaseViewHolder<EthnicCommunity> {
     }
 
     @Override
-    public void bindData(EthnicCommunity data) {
-
+    public void bindData(EthnicPreview data) {
+        tvEthnicName.setText(data.getName() == null ? "" : data.getName());
+        Glide.with(itemView.getContext()).load(data.getBackgroundUrl()).into(ivEthnic);
     }
 
     @Override

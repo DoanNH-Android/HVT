@@ -11,10 +11,6 @@ import com.hvt.hbapplication.ui.detail.adapter.viewholder.FeatureImageViewHolder
 
 import java.util.ArrayList;
 
-/**
- * Created by Hado on 7/4/17.
- */
-
 public class FeatureImageAdapter extends RecyclerView.Adapter<FeatureImageViewHolder> {
 
     public ArrayList<Image> images;

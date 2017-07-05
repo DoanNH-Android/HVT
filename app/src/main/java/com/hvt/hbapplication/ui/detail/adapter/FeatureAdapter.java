@@ -11,10 +11,6 @@ import com.hvt.hbapplication.ui.detail.adapter.viewholder.FeatureViewHolder;
 
 import java.util.ArrayList;
 
-/**
- * Created by Hado on 7/4/17.
- */
-
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureViewHolder> {
 
     public ArrayList<FeatureTranslation> featureTranslations;

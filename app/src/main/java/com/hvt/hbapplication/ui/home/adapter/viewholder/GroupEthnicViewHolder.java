@@ -13,10 +13,6 @@ import com.hvt.hbapplication.model.GroupEthnicCommunity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
-
 public class GroupEthnicViewHolder extends BaseViewHolder<GroupEthnicCommunity> {
     @BindView(R.id.tv_title_group)
     public TextView tvGroupName;
@@ -35,7 +31,6 @@ public class GroupEthnicViewHolder extends BaseViewHolder<GroupEthnicCommunity> 
 
     @Override
     public void bindData(GroupEthnicCommunity data) {
-
         tvGroupName.setText(data.groupName);
 
         groupAdapter.ethnicCommunities = data.ethnicCommunities;

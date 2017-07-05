@@ -6,10 +6,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
-
 public class EthnicCommunity implements Parcelable {
 
     @SerializedName("id")

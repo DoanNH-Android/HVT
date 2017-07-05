@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by Hado on 7/4/17.
- */
 
 class FolkTranslation implements Parcelable {
     @SerializedName("name")
