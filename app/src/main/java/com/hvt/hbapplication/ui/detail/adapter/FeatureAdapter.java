@@ -13,11 +13,7 @@ import java.util.ArrayList;
 
 public class FeatureAdapter extends RecyclerView.Adapter<FeatureViewHolder> {
 
-    public ArrayList<FeatureTranslation> featureTranslations;
-
-    public FeatureAdapter(ArrayList<FeatureTranslation> featureTranslations) {
-        this.featureTranslations = featureTranslations;
-    }
+    public ArrayList<FeatureTranslation> featureTranslations = new ArrayList<>();
 
     @Override
     public FeatureViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

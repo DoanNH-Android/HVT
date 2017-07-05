@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class FeatureImageAdapter extends RecyclerView.Adapter<FeatureImageViewHolder> {
 
-    public ArrayList<Image> images;
+    public ArrayList<Image> images = new ArrayList<>();
 
     @Override
     public FeatureImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

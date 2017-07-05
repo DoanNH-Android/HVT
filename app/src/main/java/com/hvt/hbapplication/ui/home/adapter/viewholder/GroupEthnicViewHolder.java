@@ -9,6 +9,7 @@ import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.home.adapter.GroupAdapter;
 import com.hvt.hbapplication.model.GroupEthnicCommunity;
+import com.hvt.hbapplication.util.font.StringUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,7 @@ public class GroupEthnicViewHolder extends BaseViewHolder<GroupEthnicCommunity> 
 
     @Override
     public void bindData(GroupEthnicCommunity data) {
-        tvGroupName.setText(data.groupName == null ? "" : data.groupName);
+        StringUtils.setText(tvGroupName, data.groupName);
 
         groupAdapter.ethnicCommunities.clear();
         groupAdapter.ethnicCommunities.addAll(data.ethnicCommunities);

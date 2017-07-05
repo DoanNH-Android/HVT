@@ -10,6 +10,9 @@ import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.model.FeatureTranslation;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.detail.adapter.FeatureImageAdapter;
+import com.hvt.hbapplication.util.font.StringUtils;
+
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,10 +51,10 @@ public class FeatureViewHolder extends BaseViewHolder<FeatureTranslation> {
 
     @Override
     public void bindData(FeatureTranslation data) {
-        tvTitleName.setText(data.getFeatureType());
-        tvDescription.setText(data.getDescription());
+        StringUtils.setText(tvTitleName, data.getFeatureType());
+        StringUtils.setText(tvDescription, data.getDescription());
         featureImageAdapter.images.clear();
-        featureImageAdapter.images.addAll(data.getImages());
+        featureImageAdapter.images.addAll(data.getImages() == null ? Collections.emptyList() : data.getImages());
         featureImageAdapter.notifyDataSetChanged();
     }
 

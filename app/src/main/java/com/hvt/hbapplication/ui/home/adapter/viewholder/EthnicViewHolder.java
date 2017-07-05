@@ -9,6 +9,7 @@ import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.detail.DetailActivity;
+import com.hvt.hbapplication.util.font.StringUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +32,7 @@ public class EthnicViewHolder extends BaseViewHolder<EthnicPreview> {
     @Override
     public void bindData(EthnicPreview data) {
         idEthnic = data.getId();
-        tvEthnicName.setText(data.getName() == null ? "" : data.getName());
+        StringUtils.setText(tvEthnicName, data.getName());
         Glide.with(itemView.getContext()).load(data.getBackgroundUrl())
                 .placeholder(R.drawable.error_holder)
                 .error(R.drawable.error_holder)

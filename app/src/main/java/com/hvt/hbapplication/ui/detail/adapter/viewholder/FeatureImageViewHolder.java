@@ -26,7 +26,10 @@ public class FeatureImageViewHolder extends BaseViewHolder<Image> {
 
     @Override
     public void bindData(Image data) {
-        Glide.with(itemView.getContext()).load(data.getImageUrl()).into(ivImage);
+        Glide.with(itemView.getContext())
+                .load(data.getImageUrl())
+                .placeholder(R.drawable.error_holder)
+                .error(R.drawable.error_holder).into(ivImage);
     }
 
     @Override
