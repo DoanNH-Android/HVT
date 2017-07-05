@@ -34,7 +34,8 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>
 
     @Override
     public void bindData(ArrayList<EthnicPreview> data) {
-        topAdapter.ethnicCommunities = data;
+        topAdapter.ethnicCommunities.clear();
+        topAdapter.ethnicCommunities.addAll(data);
         topAdapter.notifyDataSetChanged();
     }
 

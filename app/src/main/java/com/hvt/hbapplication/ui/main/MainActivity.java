@@ -14,8 +14,6 @@ import com.roughike.bottombar.BottomBar;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
-
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

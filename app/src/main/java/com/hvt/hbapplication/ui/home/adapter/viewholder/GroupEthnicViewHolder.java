@@ -24,16 +24,17 @@ public class GroupEthnicViewHolder extends BaseViewHolder<GroupEthnicCommunity> 
 
     public GroupEthnicViewHolder(View itemView) {
         super(itemView);
-        groupAdapter = new GroupAdapter(null);
+        groupAdapter = new GroupAdapter();
         rvEthnic.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvEthnic.setAdapter(groupAdapter);
     }
 
     @Override
     public void bindData(GroupEthnicCommunity data) {
-        tvGroupName.setText(data.groupName);
+        tvGroupName.setText(data.groupName == null ? "" : data.groupName);
 
-        groupAdapter.ethnicCommunities = data.ethnicCommunities;
+        groupAdapter.ethnicCommunities.clear();
+        groupAdapter.ethnicCommunities.addAll(data.ethnicCommunities);
         groupAdapter.notifyDataSetChanged();
     }
 

@@ -32,7 +32,10 @@ public class EthnicViewHolder extends BaseViewHolder<EthnicPreview> {
     public void bindData(EthnicPreview data) {
         idEthnic = data.getId();
         tvEthnicName.setText(data.getName() == null ? "" : data.getName());
-        Glide.with(itemView.getContext()).load(data.getBackgroundUrl()).into(ivEthnic);
+        Glide.with(itemView.getContext()).load(data.getBackgroundUrl())
+                .placeholder(R.drawable.error_holder)
+                .error(R.drawable.error_holder)
+                .into(ivEthnic);
     }
 
     @Override

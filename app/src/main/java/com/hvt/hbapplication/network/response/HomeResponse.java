@@ -14,7 +14,7 @@ public class HomeResponse implements Parcelable {
     @SerializedName("top")
     private List<EthnicPreview> top;
 
-    @SerializedName("top")
+    @SerializedName("groups")
     private List<GroupEthnicCommunity> groups;
 
 

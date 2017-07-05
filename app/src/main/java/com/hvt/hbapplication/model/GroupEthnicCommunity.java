@@ -9,10 +9,10 @@ import com.hvt.hbapplication.network.response.EthnicPreview;
 import java.util.ArrayList;
 
 public class GroupEthnicCommunity implements Parcelable {
-    @SerializedName("group_name")
+    @SerializedName("category_name")
     public String groupName;
 
-    @SerializedName("")
+    @SerializedName("folks")
     public ArrayList<EthnicPreview> ethnicCommunities;
 
 

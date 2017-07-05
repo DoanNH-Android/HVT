@@ -21,15 +21,16 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         OTHERS
     }
 
-    public ArrayList<GroupEthnicCommunity> groups;
+    public ArrayList<GroupEthnicCommunity> groups = new ArrayList<>();
 
-    public ArrayList<EthnicPreview> ethnicTop;
+    public ArrayList<EthnicPreview> ethnicTop = new ArrayList<>();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         if (viewType == ItemType.FIRST_PAGE.ordinal()) {
-
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_top_ethnic, parent, false);
+            return new TopEthnicViewHolder(view);
         }
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_group, parent, false);
         return new GroupEthnicViewHolder(view);

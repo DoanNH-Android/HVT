@@ -14,11 +14,7 @@ import java.util.ArrayList;
 
 public class GroupAdapter extends RecyclerView.Adapter<EthnicViewHolder> {
 
-    public ArrayList<EthnicPreview> ethnicCommunities;
-
-    public GroupAdapter(ArrayList<EthnicPreview> ethnicCommunities) {
-        this.ethnicCommunities = ethnicCommunities;
-    }
+    public ArrayList<EthnicPreview> ethnicCommunities = new ArrayList<>();
 
     @Override
     public EthnicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
