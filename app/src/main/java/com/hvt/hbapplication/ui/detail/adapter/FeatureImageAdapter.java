@@ -17,7 +17,7 @@ public class FeatureImageAdapter extends RecyclerView.Adapter<FeatureImageViewHo
 
     @Override
     public FeatureImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_more_information, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
         return new FeatureImageViewHolder(view);
     }
 

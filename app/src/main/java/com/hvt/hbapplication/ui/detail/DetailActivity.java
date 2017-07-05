@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.model.FeatureTranslation;
@@ -21,6 +24,7 @@ import com.hvt.hbapplication.util.font.StringUtils;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class DetailActivity extends BaseActivity implements DetailView {
 
@@ -47,13 +51,15 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @BindView(R.id.tv_introduction)
     public TextView tvIntroduction;
 
+    @BindView(R.id.fab_bookmark)
+    public FloatingActionButton fabBookmark;
+
     @BindView(R.id.rv_more)
     public RecyclerView rvFeature;
 
     public FeatureAdapter featureAdapter;
 
     DetailPresenter presenter;
-
 
     public static void navigate(Context activity, int id) {
         Intent intent = new Intent(activity, DetailActivity.class);
@@ -76,6 +82,10 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void initData() {
+        if (presenter == null) {
+            presenter = new DetailPresenter(MyApplication.getApplication().getApiClient());
+            presenter.onAttach(this);
+        }
         int idEthnic = getIntent().getIntExtra(DATA_ETHNIC, 1);
         presenter.loadEthnicDataByID(idEthnic);
     }
@@ -101,15 +111,14 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void displayFeatureData(List<FeatureTranslation> featureTranslations) {
-
+        featureAdapter.featureTranslations.clear();
+        featureAdapter.featureTranslations.addAll(featureTranslations);
+        featureAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (presenter == null) {
-            presenter = new DetailPresenter(null);
-        }
         presenter.onAttach(this);
     }
 
@@ -119,6 +128,19 @@ public class DetailActivity extends BaseActivity implements DetailView {
         if (presenter != null) {
             presenter.onDetach();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @OnClick(R.id.fab_bookmark)
+    public void fabBookmarkClickListener() {
+        //TODO: save bookmark
     }
 
 }

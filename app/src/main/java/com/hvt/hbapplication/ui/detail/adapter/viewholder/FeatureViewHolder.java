@@ -11,6 +11,7 @@ import com.hvt.hbapplication.model.FeatureTranslation;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.detail.adapter.FeatureImageAdapter;
 import com.hvt.hbapplication.util.font.StringUtils;
+import com.hvt.hbapplication.widget.SpacesItemDecoration;
 
 import java.util.Collections;
 
@@ -41,18 +42,20 @@ public class FeatureViewHolder extends BaseViewHolder<FeatureTranslation> {
             @Override
             public int getSpanSize(int position) {
                 int size = featureImageAdapter.images == null ? 0 : featureImageAdapter.images.size();
-                if (size % 2 == 0 && position == size - 1) return 2;
+                if (size % 2 == 1 && position == size - 1) return 2;
                 return 1;
             }
         });
         rvImageFeature.setLayoutManager(layoutManager);
         rvImageFeature.setAdapter(featureImageAdapter);
+        rvImageFeature.addItemDecoration(new SpacesItemDecoration(itemView.getContext(), featureImageAdapter, 3, false));
     }
 
     @Override
     public void bindData(FeatureTranslation data) {
         StringUtils.setText(tvTitleName, data.getFeatureType());
         StringUtils.setText(tvDescription, data.getDescription());
+
         featureImageAdapter.images.clear();
         featureImageAdapter.images.addAll(data.getImages() == null ? Collections.emptyList() : data.getImages());
         featureImageAdapter.notifyDataSetChanged();

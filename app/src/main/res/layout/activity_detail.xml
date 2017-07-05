@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -29,6 +30,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:paddingTop="24dp"
                 app:layout_collapseMode="pin" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -36,7 +38,8 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,9 +63,9 @@
                         android:id="@+id/tv_ethnic_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nguoi Kinh"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Nguoi Kinh" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -162,12 +165,25 @@
                         android:id="@+id/rv_more"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="5dp"
+                        android:clipToPadding="false"
+                        android:paddingBottom="100dp" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:elevation="8dp"
+        android:src="@drawable/ic_bookmark_border_white_18px"
+        app:layout_anchor="@id/collapsingToolbarLayout"
+        app:layout_anchorGravity="bottom|right|end"
+        tools:ignore="RtlHardcoded" />
 
 </android.support.design.widget.CoordinatorLayout>
