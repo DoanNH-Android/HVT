@@ -9,14 +9,15 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.model.EthnicCommunity;
+import com.hvt.hbapplication.network.response.EthnicPreview;
+import com.hvt.hbapplication.ui.detail.DetailActivity;
 
 import java.util.ArrayList;
 
 
 public class TopAdapter extends PagerAdapter {
 
-    public ArrayList<EthnicCommunity> ethnicCommunities;
+    public ArrayList<EthnicPreview> ethnicCommunities;
 
     @Override
     public int getCount() {
@@ -32,7 +33,8 @@ public class TopAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         Context context = container.getContext();
         ImageView view = (ImageView) LayoutInflater.from(context).inflate(R.layout.item_top_ethnic, container, false);
-        Glide.with(context).load("").into(view);
+        Glide.with(context).load(ethnicCommunities.get(position).getBackgroundUrl()).into(view);
+        view.setOnClickListener(view1 -> DetailActivity.navigate(context, ethnicCommunities.get(position).getId()));
         return view;
     }
 }

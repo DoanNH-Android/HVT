@@ -1,14 +1,15 @@
 package com.hvt.hbapplication.ui;
 
 
+import com.hvt.hbapplication.data.DataNetworkManager;
 import com.hvt.hbapplication.network.ApiClient;
 
 public abstract class BasePresenter<V extends BaseView> {
 
-    protected ApiClient apiClient;
+    protected DataNetworkManager dataNetworkManager;
 
     public BasePresenter(ApiClient apiClient) {
-        this.apiClient = apiClient;
+        dataNetworkManager = new DataNetworkManager(apiClient);
     }
 
     private V baseView;

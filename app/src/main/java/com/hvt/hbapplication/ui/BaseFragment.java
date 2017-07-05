@@ -72,6 +72,11 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     }
 
     @Override
+    public void showError(int message) {
+        parentActivity.showError(message);
+    }
+
+    @Override
     public void hideKeyboard() {
         parentActivity.hideKeyboard();
     }

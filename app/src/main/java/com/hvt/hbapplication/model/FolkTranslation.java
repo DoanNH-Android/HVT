@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
-class FolkTranslation implements Parcelable {
+public class FolkTranslation implements Parcelable {
     @SerializedName("name")
     @Expose
     private String name;

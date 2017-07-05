@@ -7,5 +7,7 @@ public interface BaseView {
 
     void showError(String message);
 
+    void showError(int message);
+
     void hideKeyboard();
 }

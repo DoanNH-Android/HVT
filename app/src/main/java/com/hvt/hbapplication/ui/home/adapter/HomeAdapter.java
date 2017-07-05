@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hvt.hbapplication.R;
+import com.hvt.hbapplication.model.GroupEthnicCommunity;
+import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.home.adapter.viewholder.GroupEthnicViewHolder;
 import com.hvt.hbapplication.ui.home.adapter.viewholder.TopEthnicViewHolder;
-import com.hvt.hbapplication.model.EthnicCommunity;
-import com.hvt.hbapplication.model.GroupEthnicCommunity;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public ArrayList<GroupEthnicCommunity> groups;
 
-    public ArrayList<EthnicCommunity> ethnicCommunities;
+    public ArrayList<EthnicPreview> ethnicTop;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +38,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ItemType.FIRST_PAGE.ordinal()) {
-            ((TopEthnicViewHolder) holder).bindData(ethnicCommunities);
+            ((TopEthnicViewHolder) holder).bindData(ethnicTop);
         } else {
             ((GroupEthnicViewHolder) holder).bindData(groups.get(position - 1));
         }
@@ -54,6 +54,10 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return groups == null ? 1 : (groups.size() + 1);
+        if (ethnicTop == null) {
+            return 0;
+        } else {
+            return groups == null ? 1 : (groups.size() + 1);
+        }
     }
 }

@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.BaseViewHolder;
+import com.hvt.hbapplication.ui.detail.DetailActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,12 +21,16 @@ public class EthnicViewHolder extends BaseViewHolder<EthnicPreview> {
     @BindView(R.id.iv_flag)
     public ImageView ivEthnic;
 
+    int idEthnic = 1;
+
     public EthnicViewHolder(View itemView) {
         super(itemView);
+        this.itemView.setOnClickListener(view -> DetailActivity.navigate(EthnicViewHolder.this.itemView.getContext(), idEthnic));
     }
 
     @Override
     public void bindData(EthnicPreview data) {
+        idEthnic = data.getId();
         tvEthnicName.setText(data.getName() == null ? "" : data.getName());
         Glide.with(itemView.getContext()).load(data.getBackgroundUrl()).into(ivEthnic);
     }

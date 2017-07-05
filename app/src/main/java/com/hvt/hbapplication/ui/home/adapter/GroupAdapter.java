@@ -11,9 +11,6 @@ import com.hvt.hbapplication.ui.home.adapter.viewholder.EthnicViewHolder;
 
 import java.util.ArrayList;
 
-/**
- * Created by Admin on 27-Jun-17.
- */
 
 public class GroupAdapter extends RecyclerView.Adapter<EthnicViewHolder> {
 

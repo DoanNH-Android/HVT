@@ -4,9 +4,9 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.hvt.hbapplication.R;
+import com.hvt.hbapplication.network.response.EthnicPreview;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.home.adapter.TopAdapter;
-import com.hvt.hbapplication.model.EthnicCommunity;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.relex.circleindicator.CircleIndicator;
 
-public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicCommunity>> {
+public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>> {
 
     @BindView(R.id.vp_top)
     public ViewPager vpEthnic;
@@ -33,7 +33,7 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicCommunit
     }
 
     @Override
-    public void bindData(ArrayList<EthnicCommunity> data) {
+    public void bindData(ArrayList<EthnicPreview> data) {
         topAdapter.ethnicCommunities = data;
         topAdapter.notifyDataSetChanged();
     }

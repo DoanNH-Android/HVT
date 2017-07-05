@@ -1,22 +1,25 @@
 package com.hvt.hbapplication.ui.detail;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.ui.BaseActivity;
 import com.hvt.hbapplication.model.EthnicCommunity;
+import com.hvt.hbapplication.model.FeatureTranslation;
+import com.hvt.hbapplication.ui.BaseActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 
 public class DetailActivity extends BaseActivity implements DetailView {
 
     private static final String DATA_ETHNIC = "data_ethnic";
+
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
 
@@ -28,13 +31,10 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     DetailPresenter presenter;
 
-    public EthnicCommunity ethnicData;
 
-    public static void navigate(Activity activity, EthnicCommunity ethnicCommunity) {
+    public static void navigate(Context activity, int id) {
         Intent intent = new Intent(activity, DetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(DATA_ETHNIC, ethnicCommunity);
-        intent.putExtras(bundle);
+        intent.putExtra(DATA_ETHNIC, id);
         activity.startActivity(intent);
     }
 
@@ -49,8 +49,8 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void initData() {
-        ethnicData = getIntent().getExtras().getParcelable(DATA_ETHNIC);
-        loadEthnicData(ethnicData);
+        int idEthnic = getIntent().getIntExtra(DATA_ETHNIC, 1);
+        presenter.loadEthnicDataByID(idEthnic);
     }
 
     @Override
@@ -60,8 +60,12 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
 
     @Override
-    public void loadEthnicData(EthnicCommunity ethnicCommunity) {
-        //TODO: show info of ethnic
+    public void displayBasicEthnicData(EthnicCommunity ethnicCommunity) {
+
+    }
+
+    @Override
+    public void displayFeatureData(List<FeatureTranslation> featureTranslations) {
 
     }
 

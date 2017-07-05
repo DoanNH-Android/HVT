@@ -64,6 +64,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     @Override
+    public void showError(int message) {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                message, Snackbar.LENGTH_SHORT);
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView
+                .findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+        snackbar.show();
+    }
+
+    @Override
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
