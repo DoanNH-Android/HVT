@@ -11,4 +11,6 @@ public interface DetailView extends BaseView {
     void displayBasicEthnicData(EthnicCommunity ethnicCommunity);
 
     void displayFeatureData(List<FeatureTranslation> featureTranslations);
+
+    void setStateBookmark(boolean selected);
 }

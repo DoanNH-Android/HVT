@@ -7,4 +7,8 @@
     <string name="detail_introduction">Giới thiệu</string>
     <string name="detail_more_information">Thêm thông tin</string>
     <string name="error_request">Có lỗi xảy ra. Vui lòng kiểm tra lại đường truyền mạng.</string>
+    <string name="detail_save_success">Lưu thành công</string>
+    <string name="detail_save_failure">Lưu không thành công. Vui lòng thử lại</string>
+    <string name="detail_unsave_success">Bỏ lưu thành công</string>
+    <string name="detail_unsave_failure">Bỏ lưu không thành công. Vui lòng thử lại!</string>
 </resources>

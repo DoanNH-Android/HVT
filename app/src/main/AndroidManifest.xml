@@ -22,9 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.detail.DetailActivity"
             android:theme="@style/DetailActivityTheme" />
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="FolkBookmark" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
     </application>
 
 </manifest>

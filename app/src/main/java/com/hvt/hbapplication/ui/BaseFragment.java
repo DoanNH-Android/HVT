@@ -77,6 +77,16 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     }
 
     @Override
+    public void showToast(String message) {
+        parentActivity.showToast(message);
+    }
+
+    @Override
+    public void showToast(int message) {
+        parentActivity.showToast(message);
+    }
+
+    @Override
     public void hideKeyboard() {
         parentActivity.hideKeyboard();
     }

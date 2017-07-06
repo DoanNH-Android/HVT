@@ -117,6 +117,11 @@ public class DetailActivity extends BaseActivity implements DetailView {
     }
 
     @Override
+    public void setStateBookmark(boolean selected) {
+        fabBookmark.setSelected(selected);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         presenter.onAttach(this);
@@ -140,7 +145,11 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @OnClick(R.id.fab_bookmark)
     public void fabBookmarkClickListener() {
-        //TODO: save bookmark
+        if (fabBookmark.isSelected()) {
+            presenter.unSaveEthnicData();
+        } else {
+            presenter.saveEthnicData();
+        }
     }
 
 }

@@ -9,5 +9,9 @@ public interface BaseView {
 
     void showError(int message);
 
+    void showToast(String message);
+
+    void showToast(int message);
+
     void hideKeyboard();
 }

@@ -180,8 +180,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:elevation="8dp"
-        android:src="@drawable/ic_bookmark_border_white_18px"
+        android:src="@drawable/bookmark_src"
         app:layout_anchor="@id/collapsingToolbarLayout"
         app:layout_anchorGravity="bottom|right|end"
         tools:ignore="RtlHardcoded" />

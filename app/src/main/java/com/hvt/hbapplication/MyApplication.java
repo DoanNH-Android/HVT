@@ -2,6 +2,7 @@ package com.hvt.hbapplication;
 
 import android.app.Application;
 
+import com.activeandroid.ActiveAndroid;
 import com.hvt.hbapplication.network.ApiClient;
 
 import okhttp3.OkHttpClient;
@@ -19,6 +20,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ActiveAndroid.initialize(this);
         application = this;
         createApiClient();
     }

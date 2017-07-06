@@ -14,7 +14,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
     public void loadHomeData() {
         getView().showLoading();
-        dataNetworkManager.getHome().subscribe(homeResponse -> {
+        dataManager.getHome().subscribe(homeResponse -> {
             getView().displayTopView(homeResponse.getTop() == null ? Collections.emptyList() : homeResponse.getTop());
             getView().displayGroupView(homeResponse.getGroups() == null ? Collections.emptyList() : homeResponse.getGroups());
             getView().hideLoading();
