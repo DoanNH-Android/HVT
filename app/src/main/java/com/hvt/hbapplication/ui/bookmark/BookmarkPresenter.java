@@ -28,4 +28,25 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
             getView().navigateToDetailFolkByID(folksBookmarked.get(position).idFolk);
         }
     }
+
+    public void updateFolkBookmarkSaveChange(int position) {
+        if (folksBookmarked != null && position < folksBookmarked.size()) {
+            FolkBookmark folkBookmarkChange = folksBookmarked.get(position);
+            boolean oldState = folkBookmarkChange.isSelected;
+            boolean newState = !oldState;
+            folkBookmarkChange.isSelected = newState;
+
+            dataManager.unBookmarkFolk(folkBookmarkChange.idFolk).subscribe(result -> {
+                //do nothing
+            }, throwable -> {
+                if (newState) {
+                    getView().showError(R.string.detail_save_failure);
+                } else {
+                    getView().showError(R.string.detail_unsave_failure);
+                }
+                folkBookmarkChange.isSelected = oldState;
+                getView().rollbackItemError(position);
+            });
+        }
+    }
 }

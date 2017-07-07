@@ -4,7 +4,6 @@ package com.hvt.hbapplication.ui.bookmark;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.hvt.hbapplication.MyApplication;
@@ -36,7 +35,10 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
 
     @Override
     public void initView() {
-        adapter.setListener(this);
+        adapter.setItemClickListener(this);
+        adapter.setBookmarkChangeListener(position -> {
+            presenter.updateFolkBookmarkSaveChange(position);
+        });
         rvBookmark.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBookmark.setAdapter(adapter);
     }
@@ -69,7 +71,7 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            Log.d("BookmarkFragment", "setUserVisibleHint");
+            presenter.loadFolksBookmarked();
         }
     }
 
@@ -89,6 +91,11 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     @Override
     public void navigateToDetailFolkByID(int id) {
         DetailActivity.navigate(getContext(), id);
+    }
+
+    @Override
+    public void rollbackItemError(int position) {
+        adapter.notifyItemChanged(position);
     }
 
     @Override

@@ -29,15 +29,21 @@ public class BookmarkViewHolder extends BaseViewHolder<FolkBookmark> {
     @BindView(R.id.tv_ethnic_name)
     CustomFontTextView tvFolkName;
 
-    int idFolk = 0;
+    OnClickItemListener starClickListener;
 
-    public BookmarkViewHolder(View itemView, OnClickItemListener listener) {
+    public BookmarkViewHolder(View itemView, OnClickItemListener listener, OnClickItemListener starClickListener) {
         super(itemView, listener);
+        this.starClickListener = starClickListener;
+        ivBookmark.setOnClickListener(view -> {
+            ivBookmark.setSelected(!ivBookmark.isSelected());
+            if (BookmarkViewHolder.this.starClickListener != null) {
+                BookmarkViewHolder.this.starClickListener.onItemClicked(getAdapterPosition());
+            }
+        });
     }
 
     @Override
     public void bindData(FolkBookmark data) {
-        idFolk = data.idFolk;
         StringUtils.setText(tvFolkName, data.name);
         ivBookmark.setSelected(data.isSelected);
         Glide.with(itemView.getContext()).load(data.backgroundUrl)

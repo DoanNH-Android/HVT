@@ -1,9 +1,6 @@
-package com.hvt.hbapplication.ui.bookmark;
+package com.hvt.hbapplication.ui;
 
 import android.support.v7.widget.RecyclerView;
-
-import com.hvt.hbapplication.ui.BaseViewHolder;
-import com.hvt.hbapplication.ui.OnClickItemListener;
 
 /**
  * Created by Hado on 7/7/17.
@@ -20,7 +17,7 @@ public abstract class BaseAdapter<VH extends BaseViewHolder<?>> extends Recycler
         this.listener = listener;
     }
 
-    public void setListener(OnClickItemListener listener) {
+    public void setItemClickListener(OnClickItemListener listener) {
         this.listener = listener;
     }
 }

@@ -40,7 +40,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
     }
 
     public void unSaveEthnicData() {
-        dataManager.unBookmarkFolk(ethnicCommunity).subscribe(longResult -> {
+        dataManager.unBookmarkFolk(ethnicCommunity.getId()).subscribe(longResult -> {
             if (longResult > 0) {
                 getView().showToast(R.string.detail_unsave_success);
                 getView().setStateBookmark(false);

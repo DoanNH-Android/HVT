@@ -10,4 +10,6 @@ public interface BookmarkView extends BaseView {
     void displayFolksBookmarked(List<FolkBookmark> folkBookmarks);
 
     void navigateToDetailFolkByID(int id);
+
+    void rollbackItemError(int position);
 }

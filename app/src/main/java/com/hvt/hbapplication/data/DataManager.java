@@ -1,5 +1,6 @@
 package com.hvt.hbapplication.data;
 
+import android.os.SystemClock;
 import android.support.v4.util.Pair;
 
 import com.activeandroid.query.Select;
@@ -38,15 +39,21 @@ public class DataManager {
     }
 
     public Observable<Long> bookmarkFolk(EthnicCommunity data) {
-        return Observable.defer(() -> Observable.just(saveFolk(data))).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return Observable.fromCallable(() -> saveFolk(data))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<Long> unBookmarkFolk(EthnicCommunity data) {
-        return Observable.defer(() -> Observable.just(unSaveFolk(data))).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<Long> unBookmarkFolk(int id) {
+        return Observable.defer(() -> Observable.just(unSaveFolk(id)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<List<FolkBookmark>> getFolksBookmarked() {
-        return Observable.defer(() -> Observable.just(loadFolksBookmarkedFromDB())).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return Observable.defer(() -> Observable.just(loadFolksBookmarkedFromDB()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     private List<FolkBookmark> loadFolksBookmarkedFromDB() {
@@ -54,10 +61,8 @@ public class DataManager {
     }
 
 
-    private Long unSaveFolk(EthnicCommunity data) {
-        if (data == null) return Long.valueOf(-1);
-
-        FolkBookmark folkSaved = new Select().from(FolkBookmark.class).where("id_folk = ?", data.getId()).executeSingle();
+    private Long unSaveFolk(int id) throws IllegalAccessException {
+        FolkBookmark folkSaved = new Select().from(FolkBookmark.class).where("id_folk = ?", id).executeSingle();
 
         if (folkSaved != null) {
             folkSaved.delete();
