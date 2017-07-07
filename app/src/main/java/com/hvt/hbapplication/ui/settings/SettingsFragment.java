@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class SettingsFragment extends BaseFragment {
+public class SettingsFragment extends BaseFragment implements WheelPicker.OnItemSelectedListener {
 
     @BindView(R.id.tv_current_language)
     public TextView tvCurrentLanguage;
@@ -40,6 +40,7 @@ public class SettingsFragment extends BaseFragment {
         languages.add(getString(R.string.settings_vietnamese));
         languages.add(getString(R.string.settings_english));
 
+        wheelLanguage.setOnItemSelectedListener(this);
         wheelLanguage.setData(languages);
     }
 
@@ -53,4 +54,8 @@ public class SettingsFragment extends BaseFragment {
         return ButterKnife.bind(this, view);
     }
 
+    @Override
+    public void onItemSelected(WheelPicker picker, Object data, int position) {
+        String language = (String) data;
+    }
 }
