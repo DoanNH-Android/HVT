@@ -5,6 +5,8 @@ import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.network.ApiClient;
 import com.hvt.hbapplication.ui.BasePresenter;
 
+import io.reactivex.disposables.Disposable;
+
 public class DetailPresenter extends BasePresenter<DetailView> {
     public DetailPresenter(ApiClient apiClient) {
         super(apiClient);
@@ -14,7 +16,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
 
     public void loadEthnicDataByID(int id) {
         getView().showLoading();
-        dataManager.getEthnicCommunityData(id).subscribe(pair -> {
+        Disposable disposable = dataManager.getEthnicCommunityData(id).subscribe(pair -> {
             boolean folkSaved = pair.second;
             getView().setStateBookmark(folkSaved);
 
@@ -26,6 +28,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
             getView().showError(R.string.error_request);
             getView().hideLoading();
         });
+        compositeDisposable.add(disposable);
     }
 
     public void saveEthnicData() {

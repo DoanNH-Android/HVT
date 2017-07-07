@@ -4,9 +4,13 @@ package com.hvt.hbapplication.ui;
 import com.hvt.hbapplication.data.DataManager;
 import com.hvt.hbapplication.network.ApiClient;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 public abstract class BasePresenter<V extends BaseView> {
 
     protected DataManager dataManager;
+
+    protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public BasePresenter(ApiClient apiClient) {
         dataManager = new DataManager(apiClient);
@@ -19,6 +23,7 @@ public abstract class BasePresenter<V extends BaseView> {
     }
 
     public void onDetach() {
+        compositeDisposable.clear();
         baseView = null;
     }
 
