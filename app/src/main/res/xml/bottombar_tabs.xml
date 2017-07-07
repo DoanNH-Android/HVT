@@ -14,8 +14,8 @@
         title="Bookmarks" />
 
     <tab
-        icon="@drawable/ic_bookmark_border"
+        icon="@drawable/ic_settings_black_24dp"
         id="@+id/tab_settings"
-        title="Bookmarks" />
+        title="Settings" />
 
 </tabs>

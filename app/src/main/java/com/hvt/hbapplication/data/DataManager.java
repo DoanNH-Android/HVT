@@ -1,6 +1,5 @@
 package com.hvt.hbapplication.data;
 
-import android.os.SystemClock;
 import android.support.v4.util.Pair;
 
 import com.activeandroid.query.Select;
@@ -44,6 +43,13 @@ public class DataManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<Long> bookmarkFolk(int id, String url, String name) {
+        return Observable.fromCallable(() -> saveFolk(id, url, name))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
     public Observable<Long> unBookmarkFolk(int id) {
         return Observable.defer(() -> Observable.just(unSaveFolk(id)))
                 .subscribeOn(Schedulers.io())
@@ -79,6 +85,11 @@ public class DataManager {
         String backgroundUrl = data.getBackgroundUrl();
         String name = data.getFolkTranslation().getName();
         FolkBookmark folkData = new FolkBookmark(id, backgroundUrl, name);
+        return folkData.save();
+    }
+
+    private Long saveFolk(int id, String background, String name) {
+        FolkBookmark folkData = new FolkBookmark(id, background, name);
         return folkData.save();
     }
 

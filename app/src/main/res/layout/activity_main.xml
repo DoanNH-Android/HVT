@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/background_light"
             android:paddingTop="24dp"
             app:layout_scrollFlags="scroll|enterAlways">
 
@@ -24,7 +24,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></android.support.v7.widget.Toolbar>
+                app:titleTextColor="#494c4e"></android.support.v7.widget.Toolbar>
         </FrameLayout>
 
 
@@ -35,10 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/background_light"
         app:bb_activeTabAlpha="1"
+        app:bb_activeTabColor="#95bb2c"
         app:bb_behavior="underNavbar|shy|shifting"
-        app:bb_inActiveTabAlpha="0.6"
+        app:bb_inActiveTabAlpha="0.4"
+        app:bb_inActiveTabColor="#95bb2c"
         app:bb_showShadow="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 

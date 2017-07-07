@@ -39,17 +39,26 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
             boolean newState = !oldState;
             folkBookmarkChange.isSelected = newState;
 
-            Disposable disposable = dataManager.unBookmarkFolk(folkBookmarkChange.idFolk).subscribe(result -> {
-                //do nothing
-            }, throwable -> {
-                if (newState) {
+            Disposable disposable;
+            if (newState) {
+                disposable = dataManager.bookmarkFolk(folkBookmarkChange.idFolk, folkBookmarkChange.backgroundUrl, folkBookmarkChange.name).subscribe(result -> {
+                    //do nothing
+                }, throwable -> {
                     getView().showError(R.string.detail_save_failure);
-                } else {
+                    folkBookmarkChange.isSelected = oldState;
+                    getView().rollbackItemError(position);
+                });
+            } else {
+                disposable = dataManager.unBookmarkFolk(folkBookmarkChange.idFolk).subscribe(result -> {
+                    //do nothing
+                }, throwable -> {
                     getView().showError(R.string.detail_unsave_failure);
-                }
-                folkBookmarkChange.isSelected = oldState;
-                getView().rollbackItemError(position);
-            });
+                    folkBookmarkChange.isSelected = oldState;
+                    getView().rollbackItemError(position);
+                });
+            }
+
+
             compositeDisposable.add(disposable);
         }
     }
