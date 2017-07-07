@@ -182,7 +182,7 @@
         android:layout_marginRight="32dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:elevation="8dp"
-        android:src="@drawable/bookmark_src"
+        android:src="@drawable/bookmark_selector"
         app:layout_anchor="@id/collapsingToolbarLayout"
         app:layout_anchorGravity="bottom|right|end"
         tools:ignore="RtlHardcoded" />

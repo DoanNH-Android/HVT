@@ -21,13 +21,13 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutID(), container, false);
         mUnBinder = bindingView(view);
-        initView();
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initView();
         initData();
     }
 

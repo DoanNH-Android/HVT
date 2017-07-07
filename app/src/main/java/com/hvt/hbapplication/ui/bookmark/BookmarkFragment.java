@@ -4,6 +4,7 @@ package com.hvt.hbapplication.ui.bookmark;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.hvt.hbapplication.MyApplication;
@@ -62,6 +63,14 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
             presenter = new BookmarkPresenter(MyApplication.getApplication().getApiClient());
         }
         presenter.onAttach(this);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.d("BookmarkFragment", "setUserVisibleHint");
+        }
     }
 
     @Override
