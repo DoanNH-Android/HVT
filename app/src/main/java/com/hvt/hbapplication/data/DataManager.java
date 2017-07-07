@@ -4,9 +4,12 @@ import android.support.v4.util.Pair;
 
 import com.activeandroid.query.Select;
 import com.hvt.hbapplication.Constant;
+import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.network.ApiClient;
 import com.hvt.hbapplication.network.response.HomeResponse;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -41,6 +44,15 @@ public class DataManager {
     public Observable<Long> unBookmarkFolk(EthnicCommunity data) {
         return Observable.defer(() -> Observable.just(unSaveFolk(data))).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
+    public Observable<List<FolkBookmark>> getFolksBookmarked() {
+        return Observable.defer(() -> Observable.just(loadFolksBookmarkedFromDB())).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    private List<FolkBookmark> loadFolksBookmarkedFromDB() {
+        return new Select().from(FolkBookmark.class).execute();
+    }
+
 
     private Long unSaveFolk(EthnicCommunity data) {
         if (data == null) return Long.valueOf(-1);

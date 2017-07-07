@@ -4,4 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.hvt.hbapplication.ui.bookmark.BookmarkFragment">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_bookmark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </FrameLayout>
