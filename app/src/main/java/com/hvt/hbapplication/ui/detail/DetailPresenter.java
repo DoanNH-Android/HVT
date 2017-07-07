@@ -32,7 +32,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
     }
 
     public void saveEthnicData() {
-        dataManager.bookmarkFolk(ethnicCommunity).subscribe(longResult -> {
+        Disposable disposable = dataManager.bookmarkFolk(ethnicCommunity).subscribe(longResult -> {
             if (longResult > 0) {
                 getView().showToast(R.string.detail_save_success);
                 getView().setStateBookmark(true);
@@ -40,10 +40,11 @@ public class DetailPresenter extends BasePresenter<DetailView> {
                 getView().showToast(R.string.detail_save_failure);
             }
         }, throwable -> getView().showToast(R.string.detail_save_failure));
+        compositeDisposable.add(disposable);
     }
 
     public void unSaveEthnicData() {
-        dataManager.unBookmarkFolk(ethnicCommunity.getId()).subscribe(longResult -> {
+        Disposable disposable = dataManager.unBookmarkFolk(ethnicCommunity.getId()).subscribe(longResult -> {
             if (longResult > 0) {
                 getView().showToast(R.string.detail_unsave_success);
                 getView().setStateBookmark(false);
@@ -51,5 +52,6 @@ public class DetailPresenter extends BasePresenter<DetailView> {
                 getView().showToast(R.string.detail_unsave_failure);
             }
         }, throwable -> getView().showToast(R.string.detail_unsave_failure));
+        compositeDisposable.add(disposable);
     }
 }

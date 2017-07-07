@@ -8,6 +8,8 @@ import com.hvt.hbapplication.ui.BasePresenter;
 import java.util.Collections;
 import java.util.List;
 
+import io.reactivex.disposables.Disposable;
+
 public class BookmarkPresenter extends BasePresenter<BookmarkView> {
 
     private List<FolkBookmark> folksBookmarked;
@@ -17,10 +19,11 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
     }
 
     public void loadFolksBookmarked() {
-        dataManager.getFolksBookmarked().subscribe(folkBookmarks -> {
+        Disposable disposable = dataManager.getFolksBookmarked().subscribe(folkBookmarks -> {
             folksBookmarked = folkBookmarks;
             getView().displayFolksBookmarked(folkBookmarks == null ? Collections.emptyList() : folkBookmarks);
         }, throwable -> getView().showError(R.string.bookmark_load_error));
+        compositeDisposable.add(disposable);
     }
 
     public void prepareForNavigateToDetailFolk(int position) {
@@ -36,7 +39,7 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
             boolean newState = !oldState;
             folkBookmarkChange.isSelected = newState;
 
-            dataManager.unBookmarkFolk(folkBookmarkChange.idFolk).subscribe(result -> {
+            Disposable disposable = dataManager.unBookmarkFolk(folkBookmarkChange.idFolk).subscribe(result -> {
                 //do nothing
             }, throwable -> {
                 if (newState) {
@@ -47,6 +50,7 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
                 folkBookmarkChange.isSelected = oldState;
                 getView().rollbackItemError(position);
             });
+            compositeDisposable.add(disposable);
         }
     }
 }

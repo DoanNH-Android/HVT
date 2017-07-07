@@ -6,6 +6,8 @@ import com.hvt.hbapplication.ui.BasePresenter;
 
 import java.util.Collections;
 
+import io.reactivex.disposables.Disposable;
+
 public class HomePresenter extends BasePresenter<HomeView> {
 
     public HomePresenter(ApiClient apiClient) {
@@ -14,7 +16,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
     public void loadHomeData() {
         getView().showLoading();
-        dataManager.getHome().subscribe(homeResponse -> {
+        Disposable disposable = dataManager.getHome().subscribe(homeResponse -> {
             getView().displayTopView(homeResponse.getTop() == null ? Collections.emptyList() : homeResponse.getTop());
             getView().displayGroupView(homeResponse.getGroups() == null ? Collections.emptyList() : homeResponse.getGroups());
             getView().hideLoading();
@@ -22,5 +24,6 @@ public class HomePresenter extends BasePresenter<HomeView> {
             getView().showError(R.string.error_request);
             getView().hideLoading();
         });
+        compositeDisposable.add(disposable);
     }
 }
