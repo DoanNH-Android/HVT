@@ -12,4 +12,8 @@
     <string name="detail_unsave_success">Bỏ lưu thành công</string>
     <string name="detail_unsave_failure">Bỏ lưu không thành công. Vui lòng thử lại!</string>
     <string name="bookmark_load_error">Đã xảy ra lỗi trong quá trình hiển thị dữ liệu!</string>
+    <string name="settings_vietnamese">Tiếng Việt</string>
+    <string name="settings_english">Tiếng Anh</string>
+    <string name="settings_button_change_language">Thay đổi ngôn ngữ</string>
+    <string name="settings_choose_language">Chọn ngôn ngữ</string>
 </resources>

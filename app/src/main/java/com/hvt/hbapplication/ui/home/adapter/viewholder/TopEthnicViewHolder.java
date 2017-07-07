@@ -29,7 +29,6 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>
         super(itemView);
         topAdapter = new TopAdapter();
         vpEthnic.setAdapter(topAdapter);
-        indicator.setViewPager(vpEthnic);
     }
 
     @Override
@@ -37,6 +36,7 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>
         topAdapter.ethnicCommunities.clear();
         topAdapter.ethnicCommunities.addAll(data);
         topAdapter.notifyDataSetChanged();
+        indicator.setViewPager(vpEthnic);
     }
 
     @Override
