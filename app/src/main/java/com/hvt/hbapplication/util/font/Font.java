@@ -20,8 +20,8 @@ import static com.hvt.hbapplication.util.font.Font.FIRASANS_ITALIC;
 })
 
 public @interface Font {
-    String FIRASANS = "FiraSans-Regular.ttf";
-    String FIRASANS_BOLD = "FiraSans-Bold.ttf";
+    String FIRASANS = "proximaNovaRegular.otf";
+    String FIRASANS_BOLD = "proximaNovaSemibold.otf";
     String FIRASANS_ITALIC = "FiraSans-Italic.ttf";
     String FIRASANS_BOLD_ITALIC = "FiraSans-BoldItalic.ttf";
 }
