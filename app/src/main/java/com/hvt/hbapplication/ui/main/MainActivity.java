@@ -2,6 +2,7 @@ package com.hvt.hbapplication.ui.main;
 
 import android.animation.ObjectAnimator;
 import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -26,10 +27,13 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
 
+    @BindView(R.id.searchView)
+    SearchView searchView;
 
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
+        toolbar.setTitle(getString(R.string.tab_home));
 
         PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
         viewPager.setOffscreenPageLimit(4);
@@ -51,16 +55,32 @@ public class MainActivity extends BaseActivity {
         switch (tabId) {
             case R.id.tab_home:
                 changeTab(0);
+                toolbar.setTitle(getString(R.string.tab_home));
+                changeVisibilitySearchView(false);
                 break;
             case R.id.tab_search:
                 changeTab(1);
+                toolbar.setTitle(getString(R.string.tab_search));
+                changeVisibilitySearchView(true);
                 break;
             case R.id.tab_bookmark:
                 changeTab(2);
+                toolbar.setTitle(getString(R.string.tab_bookmark));
+                changeVisibilitySearchView(false);
                 break;
             case R.id.tab_settings:
                 changeTab(3);
+                toolbar.setTitle(getString(R.string.tab_setting));
+                changeVisibilitySearchView(false);
                 break;
+        }
+    }
+
+    private void changeVisibilitySearchView(boolean isVisibility) {
+        if (isVisibility) {
+            searchView.setVisibility(View.VISIBLE);
+        } else if (searchView.getVisibility() == View.VISIBLE) {
+            searchView.setVisibility(View.GONE);
         }
     }
 
@@ -69,6 +89,5 @@ public class MainActivity extends BaseActivity {
         alphaAnimation.setDuration(200);
         alphaAnimation.start();
         viewPager.setCurrentItem(position, false);
-
     }
 }

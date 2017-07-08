@@ -16,4 +16,8 @@
     <string name="settings_english">English</string>
     <string name="settings_button_change_language">Thay đổi ngôn ngữ</string>
     <string name="settings_choose_language">Chọn ngôn ngữ</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_bookmark">Bookmarks</string>
+    <string name="tab_setting">Setting</string>
 </resources>

@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="15dp"
-    android:paddingTop="15dp">
+    android:paddingTop="16dp">
 
     <com.hvt.hbapplication.widget.CustomFontTextView
         android:id="@+id/tv_title_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
         android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#B6000000"
         tools:text="Nhóm 1" />
 
     <android.support.v7.widget.RecyclerView
@@ -21,5 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:orientation="horizontal"></android.support.v7.widget.RecyclerView>
+        android:paddingLeft="10dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal" />
+
+    <View
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:background="#406d6d6d"/>
 </LinearLayout>

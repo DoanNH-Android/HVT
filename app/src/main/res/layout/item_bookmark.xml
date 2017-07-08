@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="#fff"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:background="?selectableItemBackground"
+        android:paddingBottom="12dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp">
 
-        <RelativeLayout
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_background"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:scaleType="centerCrop" />
+
+        <com.hvt.hbapplication.widget.CustomFontTextView
+            android:id="@+id/tv_ethnic_name"
+            tools:text="Dan toc Kinh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_bookmark"
+            android:layout_toRightOf="@+id/iv_background"
+            android:textSize="18sp" />
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/iv_background"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="centerCrop" />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_bookmark"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/bookmark_gray_selector" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
 
-            <com.hvt.hbapplication.widget.CustomFontTextView
-                android:id="@+id/tv_ethnic_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/iv_bookmark"
-                android:layout_toRightOf="@+id/iv_background"
-                android:textSize="18sp"
-                tools:text="Dan toc Kinh" />
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/iv_bookmark"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/star_selector" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-</RelativeLayout>

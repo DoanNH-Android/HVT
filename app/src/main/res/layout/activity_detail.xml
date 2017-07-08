@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        tools:text="Nguoi Kinh" />
+                        android:text="Nguoi Kinh" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                         android:id="@+id/tv_population"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="73.594.427 người" />
+                        android:text="73.594.427 người" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                         android:id="@+id/tv_resident_area"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="Bla bla bla bla" />
+                        android:text="Bla bla bla bla" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                         android:id="@+id/tv_introduction"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="Bla bla bla bla" />
+                        android:text="Bla bla bla bla" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

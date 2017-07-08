@@ -34,7 +34,15 @@ public class BookmarkDiffUtil extends DiffUtil.Callback {
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldFolks.get(oldItemPosition).idFolk == newFolks.get(newItemPosition).idFolk
-                && oldFolks.get(oldItemPosition).isSelected == newFolks.get(newItemPosition).isSelected;
+        FolkBookmark oldBookmark = oldFolks.get(oldItemPosition);
+        FolkBookmark newBookmark = newFolks.get(newItemPosition);
+
+        boolean isNameEqual = (oldBookmark.name == null && newBookmark.name == null) || oldBookmark.name.equals(newBookmark.name);
+        boolean isUrlEqual = (oldBookmark.backgroundUrl == null && newBookmark.backgroundUrl == null) || oldBookmark.backgroundUrl.equals(newBookmark.backgroundUrl);
+        boolean isSelectedEqual = oldBookmark.isSelected == newBookmark.isSelected;
+
+        return isNameEqual
+                && isUrlEqual
+                && isSelectedEqual;
     }
 }

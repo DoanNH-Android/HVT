@@ -22,9 +22,18 @@
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
+                app:title="@string/tab_home"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:titleTextColor="#494c4e"></android.support.v7.widget.Toolbar>
+                app:titleTextColor="#494c4e">
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:visibility="gone"
+                    app:queryHint="Search..."
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v7.widget.Toolbar>
         </FrameLayout>
 
 
@@ -33,14 +42,13 @@
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="?actionBarSize"
         android:layout_gravity="bottom"
         android:background="@android:color/background_light"
-        app:bb_activeTabAlpha="1"
         app:bb_activeTabColor="#95bb2c"
         app:bb_behavior="underNavbar|shy"
         app:bb_inActiveTabAlpha="0.4"
-        app:bb_inActiveTabColor="#95bb2c"
+        app:bb_inActiveTabColor="#6D6D6D"
         app:bb_showShadow="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 

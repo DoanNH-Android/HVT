@@ -15,6 +15,10 @@ import com.hvt.hbapplication.util.recyclerview.BookmarkDiffUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 public class BookmarkAdapter extends BaseAdapter<BookmarkViewHolder> {
 
@@ -43,9 +47,13 @@ public class BookmarkAdapter extends BaseAdapter<BookmarkViewHolder> {
     }
 
     public void setData(List<FolkBookmark> data) {
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new BookmarkDiffUtil(folksSaved, data));
-        folksSaved.clear();
-        folksSaved.addAll(data);
-        diffResult.dispatchUpdatesTo(this);
+        Single.fromCallable(() -> DiffUtil.calculateDiff(new BookmarkDiffUtil(folksSaved, data)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(diffResult -> {
+                    folksSaved.clear();
+                    folksSaved.addAll(data);
+                    diffResult.dispatchUpdatesTo(BookmarkAdapter.this);
+                });
     }
 }
