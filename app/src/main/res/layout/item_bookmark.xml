@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardBackgroundColor="#fff"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    app:cardBackgroundColor="#fff">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +26,6 @@
 
         <com.hvt.hbapplication.widget.CustomFontTextView
             android:id="@+id/tv_ethnic_name"
-            tools:text="Dan toc Kinh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -32,7 +33,8 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/iv_bookmark"
             android:layout_toRightOf="@+id/iv_background"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:text="Dan toc Kinh" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/iv_bookmark"

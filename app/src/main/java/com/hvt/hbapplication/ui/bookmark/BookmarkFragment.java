@@ -36,9 +36,7 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     @Override
     public void initView() {
         adapter.setItemClickListener(this);
-        adapter.setBookmarkChangeListener(position -> {
-            presenter.updateFolkBookmarkSaveChange(position);
-        });
+        adapter.setBookmarkChangeListener(position -> presenter.updateFolkBookmarkSaveChange(position));
         rvBookmark.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBookmark.setAdapter(adapter);
     }
