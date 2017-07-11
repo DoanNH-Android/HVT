@@ -12,4 +12,6 @@ public interface BookmarkView extends BaseView {
     void navigateToDetailFolkByID(int id);
 
     void rollbackItemError(int position);
+
+    void showEmptyText(boolean show);
 }

@@ -4,25 +4,35 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hvt.hbapplication.R;
+
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment implements BaseView {
+public abstract class BaseFragment extends Fragment implements BaseView, SwipeRefreshLayout.OnRefreshListener {
 
     private Unbinder mUnBinder;
 
     protected BaseActivity parentActivity;
+
+    protected View swipeRefreshLayout;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutID(), container, false);
         mUnBinder = bindingView(view);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        if (swipeRefreshLayout != null) {
+            ((SwipeRefreshLayout) swipeRefreshLayout).setOnRefreshListener(this);
+        }
         return view;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -58,12 +68,16 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Override
     public void showLoading() {
-        parentActivity.showLoading();
+        if (swipeRefreshLayout != null) {
+            ((SwipeRefreshLayout) swipeRefreshLayout).setRefreshing(true);
+        }
     }
 
     @Override
     public void hideLoading() {
-        parentActivity.hideLoading();
+        if (swipeRefreshLayout != null) {
+            ((SwipeRefreshLayout) swipeRefreshLayout).setRefreshing(false);
+        }
     }
 
     @Override
@@ -89,5 +103,10 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void hideKeyboard() {
         parentActivity.hideKeyboard();
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }

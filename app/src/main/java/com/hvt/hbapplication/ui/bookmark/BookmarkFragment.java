@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
@@ -24,6 +25,9 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
 
     @BindView(R.id.rv_bookmark)
     public RecyclerView rvBookmark;
+
+    @BindView(R.id.tv_empty_data)
+    public TextView tvEmptyData;
 
     BookmarkPresenter presenter;
 
@@ -94,6 +98,11 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     @Override
     public void rollbackItemError(int position) {
         adapter.notifyItemChanged(position);
+    }
+
+    @Override
+    public void showEmptyText(boolean show) {
+        tvEmptyData.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override

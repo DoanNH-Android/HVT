@@ -20,4 +20,5 @@
     <string name="tab_search">Search</string>
     <string name="tab_bookmark">Bookmarks</string>
     <string name="tab_setting">Setting</string>
+    <string name="bookmark_empty_data">Chưa có dân tộc nào được lưu</string>
 </resources>

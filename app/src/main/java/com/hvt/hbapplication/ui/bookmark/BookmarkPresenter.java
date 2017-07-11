@@ -22,6 +22,12 @@ public class BookmarkPresenter extends BasePresenter<BookmarkView> {
         Disposable disposable = dataManager.getFolksBookmarked().subscribe(folkBookmarks -> {
             folksBookmarked = folkBookmarks;
             getView().displayFolksBookmarked(folkBookmarks == null ? Collections.emptyList() : folkBookmarks);
+
+            if (folkBookmarks == null || folkBookmarks.isEmpty()) {
+                getView().showEmptyText(true);
+            } else {
+                getView().showEmptyText(false);
+            }
         }, throwable -> getView().showError(R.string.bookmark_load_error));
         compositeDisposable.add(disposable);
     }

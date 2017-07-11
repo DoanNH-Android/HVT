@@ -84,4 +84,9 @@ public class HomeFragment extends BaseFragment implements HomeView {
             presenter.onDetach();
         }
     }
+
+    @Override
+    public void onRefresh() {
+        presenter.loadHomeData();
+    }
 }
