@@ -4,17 +4,22 @@ import android.animation.ObjectAnimator;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseActivity;
 import com.hvt.hbapplication.ui.main.adapter.PageAdapter;
+import com.hvt.hbapplication.ui.search.SearchFragment;
 import com.hvt.hbapplication.widget.SlideDisabledViewPager;
 import com.roughike.bottombar.BottomBar;
 
-import butterknife.BindView;
+import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends BaseActivity {
+import butterknife.BindView;
+import io.reactivex.subjects.PublishSubject;
+
+public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -30,20 +35,27 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.searchView)
     SearchView searchView;
 
+    PublishSubject<String> searchObservable = PublishSubject.create();
+
+    PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
+
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getString(R.string.tab_home));
 
-        PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
         viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(adapter);
         bottomBar.setOnTabSelectListener(this::onTabReSelected);
+        searchView.setOnQueryTextListener(this);
     }
 
     @Override
     public void initData() {
-
+        searchObservable.debounce(300, TimeUnit.MILLISECONDS).distinctUntilChanged().subscribe(textQuery -> {
+            Log.d("searchObservable", textQuery);
+            ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery);
+        });
     }
 
     @Override
@@ -79,7 +91,7 @@ public class MainActivity extends BaseActivity {
     private void changeVisibilitySearchView(boolean isVisibility) {
         if (isVisibility) {
             searchView.setVisibility(View.VISIBLE);
-        } else if (searchView.getVisibility() == View.VISIBLE) {
+        } else {
             searchView.setVisibility(View.GONE);
         }
     }
@@ -89,5 +101,17 @@ public class MainActivity extends BaseActivity {
         alphaAnimation.setDuration(200);
         alphaAnimation.start();
         viewPager.setCurrentItem(position, false);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        searchObservable.onNext(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        searchObservable.onNext(newText);
+        return true;
     }
 }
