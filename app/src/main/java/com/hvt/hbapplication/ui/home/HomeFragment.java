@@ -32,7 +32,6 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     }
 
-
     @Override
     public void initView() {
         homeAdapter = new HomeAdapter();
@@ -69,6 +68,11 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
+    public void updateViewLanguage(String newLang) {
+        presenter.loadHomeData();
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (presenter == null) {
@@ -89,4 +93,5 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public void onRefresh() {
         presenter.loadHomeData();
     }
+
 }

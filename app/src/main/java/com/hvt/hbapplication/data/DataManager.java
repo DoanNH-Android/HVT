@@ -5,6 +5,7 @@ import android.support.v4.util.Pair;
 
 import com.activeandroid.query.Select;
 import com.hvt.hbapplication.Constant;
+import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.network.ApiClient;
@@ -28,12 +29,12 @@ public class DataManager {
     }
 
     public Single<HomeResponse> getHome() {
-        return apiClient.getHome().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
+        return apiClient.getHome(currentLocale).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Single<Pair<EthnicCommunity, Boolean>> getEthnicCommunityData(int id) {
-        String currentLocale = Constant.EN; //TODO: check current locale, add tab select language and save language to shared preference
-
+        String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
         return apiClient.getEthnicCommunityData(id, currentLocale)
                 .map(ethnicCommunity -> new Pair<>(ethnicCommunity, checkFolkSaved(ethnicCommunity)))
                 .subscribeOn(Schedulers.io())

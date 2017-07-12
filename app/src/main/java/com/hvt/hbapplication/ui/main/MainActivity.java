@@ -4,11 +4,11 @@ import android.animation.ObjectAnimator;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseActivity;
+import com.hvt.hbapplication.ui.home.HomeFragment;
 import com.hvt.hbapplication.ui.main.adapter.PageAdapter;
 import com.hvt.hbapplication.ui.search.SearchFragment;
 import com.hvt.hbapplication.widget.SlideDisabledViewPager;
@@ -53,7 +53,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @Override
     public void initData() {
         searchObservable.debounce(300, TimeUnit.MILLISECONDS).distinctUntilChanged().subscribe(textQuery -> {
-            Log.d("searchObservable", textQuery);
             ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery);
         });
     }
@@ -113,5 +112,9 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     public boolean onQueryTextChange(String newText) {
         searchObservable.onNext(newText);
         return true;
+    }
+
+    public void updateViewLanguage(String newLang) {
+        ((HomeFragment) adapter.getItem(0)).updateViewLanguage(newLang);
     }
 }

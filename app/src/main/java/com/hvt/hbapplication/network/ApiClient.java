@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 public interface ApiClient {
 
     @GET("m_folks")
-    Single<HomeResponse> getHome();
+    Single<HomeResponse> getHome(@Query("locale") String language);
 
     @GET("m_folks/{id}")
     Single<EthnicCommunity> getEthnicCommunityData(@Path("id") int id, @Query("locale") String language);

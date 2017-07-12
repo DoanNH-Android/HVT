@@ -14,8 +14,8 @@
     <string name="bookmark_load_error">Đã xảy ra lỗi trong quá trình hiển thị dữ liệu!</string>
     <string name="settings_vietnamese">Vietnamese</string>
     <string name="settings_english">English</string>
-    <string name="settings_button_change_language">Thay đổi ngôn ngữ</string>
-    <string name="settings_choose_language">Chọn ngôn ngữ</string>
+    <string name="settings_button_change_language">Apply Settings</string>
+    <string name="settings_choose_language">Select Language</string>
     <string name="tab_home">Home</string>
     <string name="tab_search">Search</string>
     <string name="tab_bookmark">Bookmarks</string>

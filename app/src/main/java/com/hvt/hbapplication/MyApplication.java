@@ -1,9 +1,13 @@
 package com.hvt.hbapplication;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.activeandroid.ActiveAndroid;
 import com.hvt.hbapplication.network.ApiClient;
+import com.hvt.hbapplication.util.LocaleHelper;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,6 +20,8 @@ public class MyApplication extends Application {
     private static MyApplication application;
 
     private ApiClient apiClient;
+
+    public SharedPreferences sharedPref;
 
     @Override
     public void onCreate() {
@@ -56,5 +62,11 @@ public class MyApplication extends Application {
                 .client(client)
                 .build();
         apiClient = retrofit.create(ApiClient.class);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(base);
+        super.attachBaseContext(LocaleHelper.onAttach(base, sharedPref.getString(Constant.LANG, Constant.EN)));
     }
 }

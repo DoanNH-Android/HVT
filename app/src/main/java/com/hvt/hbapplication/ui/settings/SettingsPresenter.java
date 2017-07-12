@@ -9,6 +9,8 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
         super(apiClient);
     }
 
-
-
+    public void changeLanguage(String language) {
+        getView().saveLanguage(language);
+        getView().updateViewLanguage(language);
+    }
 }
