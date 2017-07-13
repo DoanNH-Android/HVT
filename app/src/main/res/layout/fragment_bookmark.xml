@@ -19,7 +19,8 @@
         android:id="@+id/tv_empty_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
         android:text="@string/bookmark_empty_data"
         android:textSize="18sp"
         android:visibility="invisible" />
