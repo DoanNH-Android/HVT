@@ -11,6 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hvt.hbapplication.util.LocaleHelper;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -27,6 +29,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         initData();
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+    }
 
     public abstract void initView();
 

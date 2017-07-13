@@ -10,4 +10,6 @@ public interface HomeView extends BaseView {
     void displayTopView(List<EthnicPreview> data);
 
     void displayGroupView(List<GroupEthnicCommunity> data);
+
+    void updateViewLanguage(String newLang);
 }

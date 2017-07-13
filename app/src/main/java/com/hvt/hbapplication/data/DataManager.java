@@ -1,15 +1,19 @@
 package com.hvt.hbapplication.data;
 
+import android.os.SystemClock;
 import android.support.v4.util.Pair;
 
 import com.activeandroid.query.Select;
 import com.hvt.hbapplication.Constant;
+import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.network.ApiClient;
 import com.hvt.hbapplication.network.response.HomeResponse;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -25,16 +29,31 @@ public class DataManager {
     }
 
     public Single<HomeResponse> getHome() {
-        return apiClient.getHome().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
+        return apiClient.getHome(currentLocale).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Single<Pair<EthnicCommunity, Boolean>> getEthnicCommunityData(int id) {
-        String currentLocale = Constant.EN; //TODO: check current locale, add tab select language and save language to shared preference
-
+        String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
         return apiClient.getEthnicCommunityData(id, currentLocale)
                 .map(ethnicCommunity -> new Pair<>(ethnicCommunity, checkFolkSaved(ethnicCommunity)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<List<EthnicCommunity>> queryFolks(String query) {
+        return apiClient.queryFolks(query);
+//        return Observable.fromCallable(() -> random()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public List<EthnicCommunity> random() {
+        int count = new Random().nextInt(10);
+        List<EthnicCommunity> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            list.add(new EthnicCommunity());
+        }
+        SystemClock.sleep(500);
+        return list;
     }
 
     public Observable<Long> bookmarkFolk(EthnicCommunity data) {

@@ -1,14 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightBackground"
-    tools:context="com.hvt.hbapplication.ui.search.SearchFragment">
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    tools:context="com.hvt.hbapplication.ui.bookmark.BookmarkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:clipToPadding="false"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="8dp" />
 
-</FrameLayout>
+    <com.hvt.hbapplication.widget.CustomFontTextView
+        android:id="@+id/tv_empty_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/bookmark_empty_data"
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
+</RelativeLayout>
