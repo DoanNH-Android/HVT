@@ -1,6 +1,5 @@
 package com.hvt.hbapplication.ui.home.adapter.viewholder;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.hvt.hbapplication.R;
@@ -12,12 +11,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import me.relex.circleindicator.CircleIndicator;
 
 public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>> {
 
     @BindView(R.id.vp_top)
-    public ViewPager vpEthnic;
+    public AutoScrollViewPager vpEthnic;
 
     @BindView(R.id.indicator)
     public CircleIndicator indicator;
@@ -28,6 +28,7 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>
     public TopEthnicViewHolder(View itemView) {
         super(itemView);
         topAdapter = new TopAdapter();
+        vpEthnic.setInterval(3000);
         vpEthnic.setAdapter(topAdapter);
     }
 
@@ -37,6 +38,7 @@ public class TopEthnicViewHolder extends BaseViewHolder<ArrayList<EthnicPreview>
         topAdapter.ethnicCommunities.addAll(data);
         topAdapter.notifyDataSetChanged();
         indicator.setViewPager(vpEthnic);
+        vpEthnic.startAutoScroll();
     }
 
     @Override
