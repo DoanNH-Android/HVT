@@ -21,4 +21,6 @@
     <string name="tab_bookmark">Bookmarks</string>
     <string name="tab_setting">Setting</string>
     <string name="bookmark_empty_data">Chưa có dân tộc nào được lưu</string>
+    <string name="search_empty_result">Không có dữ liệu nào phù hợp</string>
+
 </resources>
