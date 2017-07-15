@@ -9,7 +9,7 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.data.model.FolkBookmark;
+import com.hvt.hbapplication.model.FolkPreview;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.OnClickItemListener;
 import com.hvt.hbapplication.util.font.StringUtils;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by Hado on 7/12/17.
  */
 
-public class ResultViewHolder extends BaseViewHolder<FolkBookmark> {
+public class ResultViewHolder extends BaseViewHolder<FolkPreview> {
 
     @BindView(R.id.iv_background)
     AppCompatImageView ivBackground;
@@ -36,7 +36,7 @@ public class ResultViewHolder extends BaseViewHolder<FolkBookmark> {
     }
 
     @Override
-    public void bindData(FolkBookmark data) {
+    public void bindData(FolkPreview data) {
         StringUtils.setText(tvFolkName, data.name);
         Glide.with(itemView.getContext()).load(data.backgroundUrl)
                 .asBitmap()

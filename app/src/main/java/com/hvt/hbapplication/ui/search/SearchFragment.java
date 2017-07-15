@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.data.model.FolkBookmark;
+import com.hvt.hbapplication.model.FolkPreview;
 import com.hvt.hbapplication.ui.BaseFragment;
 import com.hvt.hbapplication.ui.OnClickItemListener;
 import com.hvt.hbapplication.ui.detail.DetailActivity;
@@ -81,7 +82,7 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
     }
 
     @Override
-    public void displayFolksResult(List<FolkBookmark> folks) {
+    public void displayFolksResult(List<FolkPreview> folks) {
         adapter.setData(folks);
     }
 

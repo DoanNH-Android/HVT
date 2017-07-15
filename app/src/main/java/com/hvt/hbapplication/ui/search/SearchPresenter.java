@@ -1,6 +1,6 @@
 package com.hvt.hbapplication.ui.search;
 
-import com.hvt.hbapplication.data.model.FolkBookmark;
+import com.hvt.hbapplication.model.FolkPreview;
 import com.hvt.hbapplication.network.ApiClient;
 import com.hvt.hbapplication.ui.BasePresenter;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SearchPresenter extends BasePresenter<SearchView> {
 
-    List<FolkBookmark> results = new ArrayList<>();
+    List<FolkPreview> results = new ArrayList<>();
 
     public SearchPresenter(ApiClient apiClient) {
         super(apiClient);
