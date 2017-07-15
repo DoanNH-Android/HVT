@@ -1,4 +1,4 @@
-package com.hvt.hbapplication.ui.search.adapter;
+package com.hvt.hbapplication.ui.search.adapter.viewholder;
 
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;

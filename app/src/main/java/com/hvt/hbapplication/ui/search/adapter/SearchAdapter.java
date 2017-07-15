@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.ui.BaseAdapter;
+import com.hvt.hbapplication.ui.search.adapter.viewholder.ResultViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
