@@ -17,6 +17,7 @@ import com.roughike.bottombar.BottomBar;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subjects.PublishSubject;
 
 public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
@@ -52,9 +53,9 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public void initData() {
-        searchObservable.debounce(300, TimeUnit.MILLISECONDS).distinctUntilChanged().subscribe(textQuery -> {
-            ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery);
-        });
+        searchObservable.debounce(300, TimeUnit.MILLISECONDS).distinctUntilChanged()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(textQuery -> ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery));
     }
 
     @Override

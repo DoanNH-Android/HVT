@@ -41,9 +41,11 @@ public class DataManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<List<EthnicCommunity>> queryFolks(String query) {
-        return apiClient.queryFolks(query);
-//        return Observable.fromCallable(() -> random()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<List<FolkBookmark>> queryFolks(String query) {
+        String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
+        return apiClient.queryFolks(query, currentLocale)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     public List<EthnicCommunity> random() {

@@ -1,5 +1,6 @@
 package com.hvt.hbapplication.network;
 
+import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.network.response.HomeResponse;
 
@@ -20,5 +21,5 @@ public interface ApiClient {
     Single<EthnicCommunity> getEthnicCommunityData(@Path("id") int id, @Query("locale") String language);
 
     @GET("m_folks")
-    Observable<List<EthnicCommunity>> queryFolks(@Query("query") String textQuery);
+    Observable<List<FolkBookmark>> queryFolks(@Query("q[name_cont]") String textQuery, @Query("locale") String locale);
 }

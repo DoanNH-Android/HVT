@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Hado on 7/6/17.
@@ -22,12 +23,15 @@ public class FolkBookmark extends Model {
     }
 
     @Column(name = "id_folk")
+    @SerializedName("id")
     public int idFolk;
 
     @Column(name = "background_url")
+    @SerializedName("background_url")
     public String backgroundUrl;
 
     @Column(name = "name")
+    @SerializedName("name")
     public String name;
 
     public boolean isSelected = true;

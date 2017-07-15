@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.model.EthnicCommunity;
+import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.ui.BaseAdapter;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SearchAdapter extends BaseAdapter<ResultViewHolder> {
 
-    ArrayList<EthnicCommunity> results = new ArrayList<>();
+    ArrayList<FolkBookmark> results = new ArrayList<>();
 
     @Override
     public ResultViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,7 +35,7 @@ public class SearchAdapter extends BaseAdapter<ResultViewHolder> {
         return results.size();
     }
 
-    public void setData(List<EthnicCommunity> data) {
+    public void setData(List<FolkBookmark> data) {
         results.clear();
         results.addAll(data);
         notifyDataSetChanged();
