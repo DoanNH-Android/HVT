@@ -28,7 +28,9 @@ public class DataManager {
 
     public Single<HomeResponse> getHome() {
         String currentLocale = MyApplication.getApplication().sharedPref.getString(Constant.LANG, Constant.EN);
-        return apiClient.getHome(currentLocale).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return apiClient.getHome(currentLocale)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     public Single<Pair<EthnicCommunity, Boolean>> getEthnicCommunityData(int id) {

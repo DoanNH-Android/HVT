@@ -14,10 +14,13 @@ import com.hvt.hbapplication.ui.search.SearchFragment;
 import com.hvt.hbapplication.widget.SlideDisabledViewPager;
 import com.roughike.bottombar.BottomBar;
 
+import java.lang.ref.WeakReference;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
 public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
@@ -36,15 +39,19 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @BindView(R.id.searchView)
     SearchView searchView;
 
+    WeakReference<SlideDisabledViewPager> wkViewPager;
+
     PublishSubject<String> searchObservable = PublishSubject.create();
 
     PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
+
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getString(R.string.tab_home));
-
+        wkViewPager = new WeakReference<>(viewPager);
         viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(adapter);
         bottomBar.setOnTabSelectListener(this::onTabReSelected);
@@ -53,9 +60,11 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public void initData() {
-        searchObservable.debounce(300, TimeUnit.MILLISECONDS).distinctUntilChanged()
+        Disposable disposable = searchObservable.debounce(300, TimeUnit.MILLISECONDS)
+                .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(textQuery -> ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery));
+        compositeDisposable.add(disposable);
     }
 
     @Override
@@ -117,5 +126,15 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     public void updateViewLanguage(String newLang) {
         ((HomeFragment) adapter.getItem(0)).updateViewLanguage(newLang);
+    }
+
+    @Override
+    public void onAttachView() {
+
+    }
+
+    @Override
+    public void onDetachView() {
+        compositeDisposable.clear();
     }
 }

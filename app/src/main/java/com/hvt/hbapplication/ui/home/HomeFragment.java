@@ -1,7 +1,6 @@
 package com.hvt.hbapplication.ui.home;
 
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -73,8 +72,12 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onRefresh() {
+        presenter.loadHomeData();
+    }
+
+    @Override
+    public void onAttachView() {
         if (presenter == null) {
             presenter = new HomePresenter(MyApplication.getApplication().getApiClient());
         }
@@ -82,16 +85,9 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDetachView() {
         if (presenter != null) {
             presenter.onDetach();
         }
     }
-
-    @Override
-    public void onRefresh() {
-        presenter.loadHomeData();
-    }
-
 }

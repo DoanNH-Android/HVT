@@ -1,7 +1,6 @@
 package com.hvt.hbapplication.ui.bookmark;
 
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -61,27 +60,10 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (presenter == null) {
-            presenter = new BookmarkPresenter(MyApplication.getApplication().getApiClient());
-        }
-        presenter.onAttach(this);
-    }
-
-    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             presenter.loadFolksBookmarked();
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if (presenter != null) {
-            presenter.onDetach();
         }
     }
 
@@ -108,5 +90,20 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     @Override
     public void onItemClicked(int position) {
         presenter.prepareForNavigateToDetailFolk(position);
+    }
+
+    @Override
+    public void onAttachView() {
+        if (presenter == null) {
+            presenter = new BookmarkPresenter(MyApplication.getApplication().getApiClient());
+        }
+        presenter.onAttach(this);
+    }
+
+    @Override
+    public void onDetachView() {
+        if (presenter != null) {
+            presenter.onDetach();
+        }
     }
 }

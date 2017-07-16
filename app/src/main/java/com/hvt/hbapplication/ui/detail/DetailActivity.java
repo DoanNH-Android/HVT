@@ -19,6 +19,7 @@ import com.hvt.hbapplication.model.EthnicCommunity;
 import com.hvt.hbapplication.model.FeatureTranslation;
 import com.hvt.hbapplication.ui.BaseActivity;
 import com.hvt.hbapplication.ui.detail.adapter.FeatureAdapter;
+import com.hvt.hbapplication.util.font.StringUtils;
 
 import java.util.List;
 
@@ -81,10 +82,6 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void initData() {
-        if (presenter == null) {
-            presenter = new DetailPresenter(MyApplication.getApplication().getApiClient());
-            presenter.onAttach(this);
-        }
         int idEthnic = getIntent().getIntExtra(DATA_ETHNIC, 1);
         presenter.loadEthnicDataByID(idEthnic);
     }
@@ -97,10 +94,10 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void displayBasicEthnicData(EthnicCommunity ethnicCommunity) {
-//        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName());
-//        StringUtils.setText(tvPopulation, ethnicCommunity.getFolkTranslation().getPopulation());
-//        StringUtils.setText(tvResidentArea, ethnicCommunity.getFolkTranslation().getResidenceArea());
-//        StringUtils.setText(tvIntroduction, ethnicCommunity.getFolkTranslation().getIntroduction());
+        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName());
+        StringUtils.setText(tvPopulation, ethnicCommunity.getFolkTranslation().getPopulation());
+        StringUtils.setText(tvResidentArea, ethnicCommunity.getFolkTranslation().getResidenceArea());
+        StringUtils.setText(tvIntroduction, ethnicCommunity.getFolkTranslation().getIntroduction());
 
         Glide.with(this).load(ethnicCommunity.getBackgroundUrl())
                 .placeholder(R.drawable.error_holder)
@@ -122,20 +119,6 @@ public class DetailActivity extends BaseActivity implements DetailView {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.onAttach(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (presenter != null) {
-            presenter.onDetach();
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             onBackPressed();
@@ -152,4 +135,18 @@ public class DetailActivity extends BaseActivity implements DetailView {
         }
     }
 
+    @Override
+    public void onAttachView() {
+        if (presenter == null) {
+            presenter = new DetailPresenter(MyApplication.getApplication().getApiClient());
+        }
+        presenter.onAttach(this);
+    }
+
+    @Override
+    public void onDetachView() {
+        if (presenter != null) {
+            presenter.onDetach();
+        }
+    }
 }

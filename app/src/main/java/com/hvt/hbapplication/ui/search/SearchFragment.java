@@ -1,7 +1,6 @@
 package com.hvt.hbapplication.ui.search;
 
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
-import com.hvt.hbapplication.data.model.FolkBookmark;
 import com.hvt.hbapplication.model.FolkPreview;
 import com.hvt.hbapplication.ui.BaseFragment;
 import com.hvt.hbapplication.ui.OnClickItemListener;
@@ -51,24 +49,10 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
     }
 
     public void queryFolks(String query) {
-        presenter.queryFolksByName(query);
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (presenter == null) {
-            presenter = new SearchPresenter(MyApplication.getApplication().getApiClient());
-        }
-        presenter.onAttach(this);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
         if (presenter != null) {
-            presenter.onDetach();
+            presenter.queryFolksByName(query);
         }
+
     }
 
     @Override
@@ -99,5 +83,20 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
     @Override
     public void onItemClicked(int position) {
         presenter.prepareForNavigateToDetailFolk(position);
+    }
+
+    @Override
+    public void onAttachView() {
+        if (presenter == null) {
+            presenter = new SearchPresenter(MyApplication.getApplication().getApiClient());
+        }
+        presenter.onAttach(this);
+    }
+
+    @Override
+    public void onDetachView() {
+        if (presenter != null) {
+            presenter.onDetach();
+        }
     }
 }

@@ -36,7 +36,7 @@ public abstract class BaseFragment extends Fragment implements BaseView, SwipeRe
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        onAttachView();
         initView();
         initData();
     }
@@ -60,6 +60,7 @@ public abstract class BaseFragment extends Fragment implements BaseView, SwipeRe
 
     @Override
     public void onDestroy() {
+        onDetachView();
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }

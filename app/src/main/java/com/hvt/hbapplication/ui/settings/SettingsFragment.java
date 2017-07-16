@@ -64,23 +64,6 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
         return ButterKnife.bind(this, view);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (presenter == null) {
-            presenter = new SettingsPresenter(MyApplication.getApplication().getApiClient());
-        }
-        presenter.onAttach(this);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if (presenter != null) {
-            presenter.onDetach();
-        }
-    }
-
     @OnClick(R.id.btn_change_language)
     public void buttonChangeLanguageOnClicked() {
         String languageSelected;
@@ -112,5 +95,20 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
     @Override
     public void saveLanguage(String newLang) {
         MyApplication.getApplication().sharedPref.edit().putString(Constant.LANG, newLang).commit();
+    }
+
+    @Override
+    public void onAttachView() {
+        if (presenter == null) {
+            presenter = new SettingsPresenter(MyApplication.getApplication().getApiClient());
+        }
+        presenter.onAttach(this);
+    }
+
+    @Override
+    public void onDetachView() {
+        if (presenter != null) {
+            presenter.onDetach();
+        }
     }
 }

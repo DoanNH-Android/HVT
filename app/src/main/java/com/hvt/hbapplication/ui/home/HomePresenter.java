@@ -16,7 +16,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
     public void loadHomeData() {
         getView().showLoading();
-        Disposable disposable = dataManager.getHome().subscribe(homeResponse -> {
+        Disposable disposable = dataManager.getHome()
+                .subscribe(homeResponse -> {
             getView().displayTopView(homeResponse.getTop() == null ? Collections.emptyList() : homeResponse.getTop());
             getView().displayGroupView(homeResponse.getGroups() == null ? Collections.emptyList() : homeResponse.getGroups());
             getView().hideLoading();
