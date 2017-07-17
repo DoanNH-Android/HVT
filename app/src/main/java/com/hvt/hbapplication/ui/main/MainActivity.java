@@ -39,19 +39,19 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @BindView(R.id.searchView)
     SearchView searchView;
 
-    WeakReference<SlideDisabledViewPager> wkViewPager;
+    PublishSubject<String> searchObservable;
 
-    PublishSubject<String> searchObservable = PublishSubject.create();
+    PageAdapter adapter;
 
-    PageAdapter adapter = new PageAdapter(getSupportFragmentManager());
+    WeakReference<PageAdapter> wkAdapter;
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
+        adapter = new PageAdapter(getSupportFragmentManager());
         toolbar.setTitle(getString(R.string.tab_home));
-        wkViewPager = new WeakReference<>(viewPager);
         viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(adapter);
         bottomBar.setOnTabSelectListener(this::onTabReSelected);
@@ -60,10 +60,19 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     @Override
     public void initData() {
+        searchObservable = PublishSubject.create();
+        wkAdapter = new WeakReference<>(adapter);
         Disposable disposable = searchObservable.debounce(300, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(textQuery -> ((SearchFragment) adapter.getItem(1)).queryFolks(textQuery));
+                .subscribe(textQuery -> {
+                    if (wkAdapter.get() != null) {
+                        ((SearchFragment) wkAdapter.get().getItem(1)).queryFolks(textQuery);
+                    } else {
+                        wkAdapter.clear();
+                        wkAdapter = null;
+                    }
+                });
         compositeDisposable.add(disposable);
     }
 
