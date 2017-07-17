@@ -1,20 +1,20 @@
 package com.hvt.hbapplication.ui.main;
 
-import android.animation.ObjectAnimator;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseActivity;
+import com.hvt.hbapplication.ui.bookmark.BookmarkFragment;
 import com.hvt.hbapplication.ui.home.HomeFragment;
-import com.hvt.hbapplication.ui.main.adapter.PageAdapter;
 import com.hvt.hbapplication.ui.search.SearchFragment;
-import com.hvt.hbapplication.widget.SlideDisabledViewPager;
+import com.hvt.hbapplication.ui.settings.SettingsFragment;
 import com.roughike.bottombar.BottomBar;
 
-import java.lang.ref.WeakReference;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -30,8 +30,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @BindView(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
 
-    @BindView(R.id.view_pager)
-    SlideDisabledViewPager viewPager;
 
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
@@ -41,19 +39,17 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     PublishSubject<String> searchObservable;
 
-    PageAdapter adapter;
-
-    WeakReference<PageAdapter> wkAdapter;
-
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    HomeFragment homeFragment;
+    SearchFragment searchFragment;
+    BookmarkFragment bookmarkFragment;
+    SettingsFragment settingsFragment;
 
     @Override
     public void initView() {
         setSupportActionBar(toolbar);
-        adapter = new PageAdapter(getSupportFragmentManager());
         toolbar.setTitle(getString(R.string.tab_home));
-        viewPager.setOffscreenPageLimit(4);
-        viewPager.setAdapter(adapter);
         bottomBar.setOnTabSelectListener(this::onTabReSelected);
         searchView.setOnQueryTextListener(this);
     }
@@ -61,18 +57,10 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @Override
     public void initData() {
         searchObservable = PublishSubject.create();
-        wkAdapter = new WeakReference<>(adapter);
         Disposable disposable = searchObservable.debounce(300, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(textQuery -> {
-                    if (wkAdapter.get() != null) {
-                        ((SearchFragment) wkAdapter.get().getItem(1)).queryFolks(textQuery);
-                    } else {
-                        wkAdapter.clear();
-                        wkAdapter = null;
-                    }
-                });
+                .subscribe(textQuery -> searchFragment.queryFolks(textQuery));
         compositeDisposable.add(disposable);
     }
 
@@ -115,10 +103,34 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     }
 
     private void changeTab(int position) {
-        ObjectAnimator alphaAnimation = ObjectAnimator.ofFloat(viewPager, View.ALPHA, 0, 1);
-        alphaAnimation.setDuration(200);
-        alphaAnimation.start();
-        viewPager.setCurrentItem(position, false);
+        Fragment fragment = null;
+
+        switch (position) {
+            case 0:
+                if (homeFragment == null) homeFragment = new HomeFragment();
+                fragment = homeFragment;
+                break;
+            case 1:
+                if (searchFragment == null) searchFragment = new SearchFragment();
+                fragment = searchFragment;
+                break;
+            case 2:
+                if (bookmarkFragment == null) bookmarkFragment = new BookmarkFragment();
+                fragment = bookmarkFragment;
+                break;
+            case 3:
+                if (settingsFragment == null) settingsFragment = new SettingsFragment();
+                fragment = settingsFragment;
+                break;
+        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+//        ObjectAnimator alphaAnimation = ObjectAnimator.ofFloat(viewPager, View.ALPHA, 0, 1);
+//        alphaAnimation.setDuration(200);
+//        alphaAnimation.start();
+//        viewPager.setCurrentItem(position, false);
     }
 
     @Override
@@ -134,7 +146,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     }
 
     public void updateViewLanguage(String newLang) {
-        ((HomeFragment) adapter.getItem(0)).updateViewLanguage(newLang);
+        homeFragment.updateViewLanguage(newLang);
     }
 
     @Override

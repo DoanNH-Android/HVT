@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="-24dp">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -17,22 +16,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
-            android:paddingTop="24dp"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
+            android:paddingTop="24dp">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:title="@string/tab_home"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:title="@string/tab_home"
                 app:titleTextColor="#494c4e">
 
                 <android.support.v7.widget.SearchView
                     android:id="@+id/searchView"
-                    android:visibility="gone"
-                    app:queryHint="Search..."
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    app:queryHint="Search..." />
             </android.support.v7.widget.Toolbar>
         </FrameLayout>
 
@@ -46,16 +44,16 @@
         android:layout_gravity="bottom"
         android:background="@android:color/background_light"
         app:bb_activeTabColor="#95bb2c"
-        app:bb_behavior="underNavbar|shy"
+        app:bb_behavior="underNavbar"
         app:bb_inActiveTabAlpha="0.4"
         app:bb_inActiveTabColor="#6D6D6D"
         app:bb_showShadow="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
-    <com.hvt.hbapplication.widget.SlideDisabledViewPager
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_marginTop="80dp" />
 
 </android.support.design.widget.CoordinatorLayout>
