@@ -12,7 +12,6 @@ import com.hvt.hbapplication.Constant;
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseFragment;
-import com.hvt.hbapplication.ui.main.MainActivity;
 import com.hvt.hbapplication.util.LocaleHelper;
 
 import java.util.ArrayList;
@@ -74,7 +73,6 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
         }
 
         presenter.changeLanguage(languageSelected);
-        ((MainActivity) getActivity()).updateViewLanguage(languageSelected);
     }
 
     @Override
@@ -94,7 +92,7 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
 
     @Override
     public void saveLanguage(String newLang) {
-        MyApplication.getApplication().sharedPref.edit().putString(Constant.LANG, newLang).commit();
+        MyApplication.getApplication().sharedPref.edit().putString(Constant.LANG, newLang).apply();
     }
 
     @Override
