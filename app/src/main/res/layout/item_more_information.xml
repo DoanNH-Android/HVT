@@ -27,6 +27,6 @@
             android:id="@+id/rv_image_feature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"></android.support.v7.widget.RecyclerView>
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 </FrameLayout>

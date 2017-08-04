@@ -11,7 +11,6 @@ import com.hvt.hbapplication.model.FeatureTranslation;
 import com.hvt.hbapplication.ui.BaseViewHolder;
 import com.hvt.hbapplication.ui.detail.adapter.FeatureImageAdapter;
 import com.hvt.hbapplication.util.font.StringUtils;
-import com.hvt.hbapplication.widget.SpacesItemDecoration;
 
 import java.util.Collections;
 
@@ -48,7 +47,6 @@ public class FeatureViewHolder extends BaseViewHolder<FeatureTranslation> {
         });
         rvImageFeature.setLayoutManager(layoutManager);
         rvImageFeature.setAdapter(featureImageAdapter);
-        rvImageFeature.addItemDecoration(new SpacesItemDecoration(itemView.getContext(), featureImageAdapter, 3, false));
     }
 
     @Override

@@ -8,5 +8,7 @@
     <com.hvt.hbapplication.widget.AspectRatioImageView
         android:id="@+id/iv_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        android:scaleType="centerCrop"/>
 </FrameLayout>
