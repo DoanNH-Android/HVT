@@ -63,8 +63,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
+                        android:textColor="@color/title_color"
                         android:textStyle="bold"
-                        android:text="Nguoi Kinh" />
+                        tools:text="Nguoi Kinh" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -75,12 +76,14 @@
                         <ImageView
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_group_black_24px" />
 
                         <com.hvt.hbapplication.widget.CustomFontTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/title_color"
                             android:textSize="18sp"
                             android:layout_marginLeft="10dp"
                             android:text="@string/detail_population" />
@@ -88,10 +91,11 @@
 
                     <com.hvt.hbapplication.widget.CustomFontTextView
                         android:id="@+id/tv_population"
-                        android:textSize="18sp"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
-                        android:text="73.594.427 người" />
+                        android:lineSpacingExtra="1.5dp"
+                        tools:text="73.594.427 người" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -102,23 +106,26 @@
                         <ImageView
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_pie_chart_black_24px" />
 
                         <com.hvt.hbapplication.widget.CustomFontTextView
                             android:textSize="18sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/title_color"
                             android:layout_marginLeft="10dp"
                             android:text="@string/detail_resident_area" />
                     </LinearLayout>
 
                     <com.hvt.hbapplication.widget.CustomFontTextView
-                        android:textSize="18sp"
                         android:id="@+id/tv_resident_area"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bla bla bla bla" />
+                        android:lineSpacingExtra="1.5dp"
+                        tools:text="Bla bla bla bla" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -129,23 +136,26 @@
                         <ImageView
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_subject_black_24px" />
 
                         <com.hvt.hbapplication.widget.CustomFontTextView
                             android:textSize="18sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/title_color"
                             android:layout_marginLeft="10dp"
                             android:text="@string/detail_introduction" />
                     </LinearLayout>
 
                     <com.hvt.hbapplication.widget.CustomFontTextView
-                        android:textSize="18sp"
                         android:id="@+id/tv_introduction"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bla bla bla bla" />
+                        android:lineSpacingExtra="1.5dp"
+                        tools:text="Bla bla bla bla" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -156,14 +166,16 @@
                         <ImageView
                             android:layout_width="@dimen/icon_size"
                             android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_bubble_chart_black_24px" />
 
                         <com.hvt.hbapplication.widget.CustomFontTextView
                             android:textSize="18sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
+                            android:textColor="@color/title_color"
+                            android:layout_gravity="center_vertical"
                             android:text="@string/detail_more_information" />
                     </LinearLayout>
 
