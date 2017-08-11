@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.activeandroid.ActiveAndroid;
+import com.crashlytics.android.Crashlytics;
 import com.hvt.hbapplication.network.ApiClient;
 import com.hvt.hbapplication.util.LocaleHelper;
 
+import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import retrofit2.Retrofit;
@@ -26,6 +28,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         ActiveAndroid.initialize(this);
         application = this;
         createApiClient();

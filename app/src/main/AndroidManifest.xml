@@ -35,6 +35,9 @@
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="1" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ba033099fd6e74d4053e14bff9ce99b48df868f8" />
     </application>
 
 </manifest>
