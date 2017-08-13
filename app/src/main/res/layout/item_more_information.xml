@@ -10,20 +10,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.hvt.hbapplication.widget.CustomFontTextView
+        <com.hvt.hbapplication.widget.ArticleTextView
             android:id="@+id/tv_feature_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/title_color"
             android:layout_gravity="center_vertical"
-            android:textSize="18sp"
-            tools:text="Món ăn" />
+            android:textStyle="italic"
+            android:textSize="25sp"
+            tools:text="Mon An" />
 
-        <com.hvt.hbapplication.widget.CustomFontTextView
+        <com.hvt.hbapplication.widget.ArticleTextView
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="1.5dp"
+            android:lineSpacingExtra="@dimen/spacing_line"
+            android:textSize="@dimen/normal_text"
             tools:text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " />
 
         <android.support.v7.widget.RecyclerView

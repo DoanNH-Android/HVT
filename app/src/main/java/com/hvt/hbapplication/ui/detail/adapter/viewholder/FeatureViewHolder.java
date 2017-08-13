@@ -51,7 +51,7 @@ public class FeatureViewHolder extends BaseViewHolder<FeatureTranslation> {
 
     @Override
     public void bindData(FeatureTranslation data) {
-        StringUtils.setText(tvTitleName, data.getFeatureType());
+        StringUtils.setText(tvTitleName, data.getFeatureType().toUpperCase());
         StringUtils.setText(tvDescription, data.getDescription());
 
         featureImageAdapter.images.clear();

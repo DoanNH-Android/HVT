@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_size">22dp</dimen>
+    <dimen name="spacing_line">5dp</dimen>
+    <dimen name="normal_text">18sp</dimen>
 </resources>

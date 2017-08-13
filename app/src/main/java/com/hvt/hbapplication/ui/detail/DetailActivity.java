@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -48,9 +49,6 @@ public class DetailActivity extends BaseActivity implements DetailView {
     @BindView(R.id.tv_resident_area)
     public TextView tvResidentArea;
 
-    @BindView(R.id.tv_introduction)
-    public TextView tvIntroduction;
-
     @BindView(R.id.fab_bookmark)
     public FloatingActionButton fabBookmark;
 
@@ -58,6 +56,9 @@ public class DetailActivity extends BaseActivity implements DetailView {
     public RecyclerView rvFeature;
 
     public FeatureAdapter featureAdapter;
+
+    @BindView(R.id.nested)
+    public NestedScrollView nestedScrollView;
 
     DetailPresenter presenter;
 
@@ -94,15 +95,15 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void displayBasicEthnicData(EthnicCommunity ethnicCommunity) {
-        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName());
+        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName().toUpperCase());
         StringUtils.setText(tvPopulation, ethnicCommunity.getFolkTranslation().getPopulation());
         StringUtils.setText(tvResidentArea, ethnicCommunity.getFolkTranslation().getResidenceArea());
-        StringUtils.setText(tvIntroduction, ethnicCommunity.getFolkTranslation().getIntroduction());
 
         Glide.with(this).load(ethnicCommunity.getBackgroundUrl())
                 .placeholder(R.drawable.error_holder)
                 .error(R.drawable.error_holder)
                 .into(ivCover);
+
 
     }
 
@@ -111,6 +112,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
         featureAdapter.featureTranslations.clear();
         featureAdapter.featureTranslations.addAll(featureTranslations);
         featureAdapter.notifyDataSetChanged();
+        nestedScrollView.scrollTo(0, 0);
     }
 
     @Override
