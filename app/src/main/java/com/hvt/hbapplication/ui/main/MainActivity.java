@@ -129,6 +129,11 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         transaction.commit();
     }
 
+
+    public void moveToHome() {
+        bottomBar.selectTabAtPosition(0);
+    }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
         searchObservable.onNext(query);

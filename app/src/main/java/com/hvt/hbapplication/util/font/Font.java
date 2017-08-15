@@ -23,8 +23,8 @@ import static com.hvt.hbapplication.util.font.Font.JOSEFINSANS_LIGHT;
 
 public @interface Font {
     String FIRASANS = "proximaNovaRegular.otf";
-    String FIRASANS_BOLD = "proximaNovaSemibold.otf";
-    String FIRASANS_ITALIC = "JosefinSans-Light.ttf";
-    String FIRASANS_BOLD_ITALIC = "FiraSans-BoldItalic.ttf";
+    String FIRASANS_BOLD = "Roboto-Regular.ttf";
+    String FIRASANS_ITALIC = "Roboto-Thin.ttf";
+    String FIRASANS_BOLD_ITALIC = "Roboto-Bold.ttf";
     String JOSEFINSANS_LIGHT = "Roboto-Light.ttf";
 }

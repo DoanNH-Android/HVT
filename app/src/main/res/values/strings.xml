@@ -3,7 +3,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="detail_population">POPULATION</string>
-    <string name="detail_resident_area">INHABIT AREA</string>
+    <string name="detail_resident_area">LIVING AREA</string>
     <string name="detail_introduction">Introduction</string>
     <string name="detail_more_information">More</string>
     <string name="error_request">Unable to load section. Please check your network again.</string>
@@ -20,6 +20,8 @@
     <string name="tab_search">Search</string>
     <string name="tab_bookmark">Bookmark</string>
     <string name="tab_setting">Settings</string>
-    <string name="bookmark_empty_data">You have not saved anything</string>
+    <string name="bookmark_empty_data">No Bookmark</string>
     <string name="search_empty_result">No data matching</string>
+    <string name="popular_searches">Popular Searches</string>
+    <string name="bookmark_empty_content">You can save contents for offline viewing</string>
 </resources>

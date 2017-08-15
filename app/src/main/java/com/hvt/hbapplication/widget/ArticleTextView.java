@@ -24,13 +24,13 @@ public class ArticleTextView extends AppCompatTextView {
     private Typeface selectTypeface(Context context, int style) {
         switch (style) {
             case Typeface.BOLD:
-                return FontCache.getTypeface(context, Font.JOSEFINSANS_LIGHT);
+                return FontCache.getTypeface(context, Font.FIRASANS_BOLD);
 
             case Typeface.ITALIC:
                 return FontCache.getTypeface(context, Font.FIRASANS_ITALIC);
 
             case Typeface.BOLD_ITALIC:
-                return FontCache.getTypeface(context, Font.JOSEFINSANS_LIGHT);
+                return FontCache.getTypeface(context, Font.FIRASANS_BOLD_ITALIC);
 
             case Typeface.NORMAL:
             default:

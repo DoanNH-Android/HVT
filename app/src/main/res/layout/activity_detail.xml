@@ -57,86 +57,69 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:orientation="vertical">
 
                     <com.hvt.hbapplication.widget.ArticleTextView
                         android:id="@+id/tv_ethnic_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:lineSpacingExtra="10dp"
+                        android:padding="@dimen/common_padding"
                         android:textColor="@color/title_color"
-                        android:textSize="45sp"
+                        android:textSize="42sp"
+                        android:textStyle="italic"
                         tools:text="Nguoi Kinh" />
 
                     <View
                         android:layout_width="40dp"
                         android:layout_height="1dp"
                         android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="@dimen/common_padding"
                         android:layout_marginTop="20dp"
                         android:background="@color/title_color" />
 
-                    <LinearLayout
+                    <com.hvt.hbapplication.widget.ArticleTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_group_black_24px" />
-
-                        <com.hvt.hbapplication.widget.ArticleTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:text="@string/detail_population"
-                            android:textColor="@color/title_color"
-                            android:textSize="25sp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/common_padding"
+                        android:text="@string/detail_population"
+                        android:textColor="@color/title_color"
+                        android:textSize="@dimen/title_size"
+                        android:textStyle="bold" />
 
                     <com.hvt.hbapplication.widget.ArticleTextView
                         android:id="@+id/tv_population"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
                         android:lineSpacingExtra="@dimen/spacing_line"
+                        android:paddingLeft="@dimen/common_padding"
+                        android:paddingRight="@dimen/common_padding"
                         android:textSize="@dimen/normal_text"
                         tools:text="Bla bla bla bla Bla bla bla bla Bla bla bla bla Bla bla bla bla Bla bla bla bla" />
 
-                    <LinearLayout
+                    <com.hvt.hbapplication.widget.ArticleTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/icon_size"
-                            android:layout_height="@dimen/icon_size"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_pie_chart_black_24px" />
-
-                        <com.hvt.hbapplication.widget.ArticleTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:text="@string/detail_resident_area"
-                            android:textColor="@color/title_color"
-                            android:textSize="25sp"
-                            android:textStyle="italic" />
-                    </LinearLayout>
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/common_padding"
+                        android:text="@string/detail_resident_area"
+                        android:textColor="@color/title_color"
+                        android:textSize="@dimen/title_size"
+                        android:textStyle="bold" />
 
                     <com.hvt.hbapplication.widget.ArticleTextView
                         android:id="@+id/tv_resident_area"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
                         android:lineSpacingExtra="@dimen/spacing_line"
+                        android:paddingLeft="@dimen/common_padding"
+                        android:paddingRight="@dimen/common_padding"
                         android:textSize="@dimen/normal_text"
                         tools:text="Bla bla bla bla" />
 

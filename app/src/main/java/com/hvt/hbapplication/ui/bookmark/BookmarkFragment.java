@@ -4,7 +4,7 @@ package com.hvt.hbapplication.ui.bookmark;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
@@ -13,11 +13,13 @@ import com.hvt.hbapplication.ui.BaseFragment;
 import com.hvt.hbapplication.ui.OnClickItemListener;
 import com.hvt.hbapplication.ui.bookmark.adapter.BookmarkAdapter;
 import com.hvt.hbapplication.ui.detail.DetailActivity;
+import com.hvt.hbapplication.ui.main.MainActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class BookmarkFragment extends BaseFragment implements BookmarkView, OnClickItemListener {
@@ -25,8 +27,8 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
     @BindView(R.id.rv_bookmark)
     public RecyclerView rvBookmark;
 
-    @BindView(R.id.tv_empty_data)
-    public TextView tvEmptyData;
+    @BindView(R.id.layout_empty)
+    public LinearLayout layoutEmpty;
 
     BookmarkPresenter presenter;
 
@@ -84,7 +86,12 @@ public class BookmarkFragment extends BaseFragment implements BookmarkView, OnCl
 
     @Override
     public void showEmptyText(boolean show) {
-        tvEmptyData.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        layoutEmpty.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    @OnClick(R.id.btn_explore)
+    public void clickExplore() {
+        ((MainActivity) getActivity()).moveToHome();
     }
 
     @Override

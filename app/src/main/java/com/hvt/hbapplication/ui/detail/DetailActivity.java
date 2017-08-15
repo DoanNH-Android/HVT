@@ -95,7 +95,7 @@ public class DetailActivity extends BaseActivity implements DetailView {
 
     @Override
     public void displayBasicEthnicData(EthnicCommunity ethnicCommunity) {
-        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName().toUpperCase());
+        StringUtils.setText(tvFolkName, ethnicCommunity.getFolkTranslation().getName());
         StringUtils.setText(tvPopulation, ethnicCommunity.getFolkTranslation().getPopulation());
         StringUtils.setText(tvResidentArea, ethnicCommunity.getFolkTranslation().getResidenceArea());
 
