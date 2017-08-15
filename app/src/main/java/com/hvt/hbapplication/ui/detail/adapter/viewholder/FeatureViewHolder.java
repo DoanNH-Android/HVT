@@ -1,21 +1,18 @@
 package com.hvt.hbapplication.ui.detail.adapter.viewholder;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.model.FeatureTranslation;
 import com.hvt.hbapplication.ui.BaseViewHolder;
-import com.hvt.hbapplication.ui.detail.adapter.FeatureImageAdapter;
+import com.hvt.hbapplication.ui.detail.adapter.ImagePagerAdapter;
 import com.hvt.hbapplication.util.font.StringUtils;
-
-import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.relex.circleindicator.CircleIndicator;
 
 /**
  * Created by Hado on 7/4/17.
@@ -30,33 +27,26 @@ public class FeatureViewHolder extends BaseViewHolder<FeatureTranslation> {
     public TextView tvDescription;
 
     @BindView(R.id.rv_image_feature)
-    public RecyclerView rvImageFeature;
+    public ViewPager vpImages;
 
-    public FeatureImageAdapter featureImageAdapter = new FeatureImageAdapter();
+    @BindView(R.id.indicator)
+    public CircleIndicator indicator;
+
+    public ImagePagerAdapter adapter = new ImagePagerAdapter();
 
     public FeatureViewHolder(View itemView) {
         super(itemView);
-        GridLayoutManager layoutManager = new GridLayoutManager(itemView.getContext(), 2, LinearLayoutManager.VERTICAL, false);
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                int size = featureImageAdapter.images == null ? 0 : featureImageAdapter.images.size();
-                if (size % 2 == 1 && position == size - 1) return 2;
-                return 1;
-            }
-        });
-        rvImageFeature.setLayoutManager(layoutManager);
-        rvImageFeature.setAdapter(featureImageAdapter);
+        vpImages.setAdapter(adapter);
     }
 
     @Override
     public void bindData(FeatureTranslation data) {
         StringUtils.setText(tvTitleName, data.getFeatureType().toUpperCase());
         StringUtils.setText(tvDescription, data.getDescription());
-
-        featureImageAdapter.images.clear();
-        featureImageAdapter.images.addAll(data.getImages() == null ? Collections.emptyList() : data.getImages());
-        featureImageAdapter.notifyDataSetChanged();
+        adapter.images.clear();
+        adapter.images.addAll(data.getImages());
+        adapter.notifyDataSetChanged();
+        indicator.setViewPager(vpImages);
     }
 
     @Override

@@ -32,11 +32,24 @@
             android:textSize="@dimen/normal_text"
             tools:text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_image_feature"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/rv_image_feature"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+
     </LinearLayout>
 </FrameLayout>
