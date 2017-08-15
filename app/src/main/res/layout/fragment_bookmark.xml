@@ -15,14 +15,46 @@
         android:paddingRight="5dp"
         android:paddingTop="8dp" />
 
-    <com.hvt.hbapplication.widget.CustomFontTextView
-        android:id="@+id/tv_empty_data"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:text="@string/bookmark_empty_data"
-        android:textSize="18sp"
-        android:visibility="invisible" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingBottom="70dp">
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/bookmark_empty_data"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:gravity="center"
+            android:text="@string/bookmark_empty_content"
+            android:textSize="18sp" />
+
+
+        <Button
+            android:id="@+id/btn_explore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/explore_background"
+            android:text="START EXPLORING"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
 
 </RelativeLayout>

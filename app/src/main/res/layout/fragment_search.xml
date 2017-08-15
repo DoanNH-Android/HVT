@@ -15,14 +15,64 @@
         android:paddingRight="5dp"
         android:paddingTop="8dp" />
 
-    <com.hvt.hbapplication.widget.CustomFontTextView
-        android:id="@+id/tv_empty_data"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:text="@string/search_empty_result"
-        android:textSize="18sp"
-        android:visibility="invisible" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/popular_searches"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="#ddd" />
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="Kinh"
+            android:textColor="#56b1bf"
+            android:textSize="17sp" />
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="H'Mong"
+            android:textColor="#56b1bf"
+            android:textSize="17sp" />
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="Pa Then"
+            android:textColor="#56b1bf"
+            android:textSize="17sp" />
+
+        <com.hvt.hbapplication.widget.ArticleTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="Muong"
+            android:textColor="#56b1bf"
+            android:textSize="17sp" />
+    </LinearLayout>
 </RelativeLayout>

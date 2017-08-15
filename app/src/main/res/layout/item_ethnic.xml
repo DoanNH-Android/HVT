@@ -18,8 +18,7 @@
             android:id="@+id/iv_flag"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:scaleType="fitXY"
-            tools:src="@drawable/flag" />
+            android:scaleType="fitXY"/>
     </android.support.v7.widget.CardView>
 
     <com.hvt.hbapplication.widget.CustomFontTextView

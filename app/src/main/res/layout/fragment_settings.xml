@@ -44,7 +44,7 @@
             android:id="@+id/btn_change_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#aac856"
+            android:background="@drawable/explore_background"
             android:text="@string/settings_button_change_language"
             android:textColor="@android:color/white" />
     </com.andexert.library.RippleView>

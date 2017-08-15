@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,17 +13,21 @@
             android:id="@+id/tv_feature_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/title_color"
             android:layout_gravity="center_vertical"
-            android:textStyle="italic"
-            android:textSize="25sp"
+            android:padding="@dimen/common_padding"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
             tools:text="Mon An" />
 
         <com.hvt.hbapplication.widget.ArticleTextView
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/common_padding"
+            android:layout_marginLeft="@dimen/common_padding"
+            android:layout_marginRight="@dimen/common_padding"
+            android:layout_marginTop="5dp"
             android:lineSpacingExtra="@dimen/spacing_line"
             android:textSize="@dimen/normal_text"
             tools:text="Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah " />
@@ -33,6 +36,7 @@
             android:id="@+id/rv_image_feature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 </FrameLayout>

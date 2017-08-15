@@ -4,7 +4,7 @@ package com.hvt.hbapplication.ui.search;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.hvt.hbapplication.MyApplication;
 import com.hvt.hbapplication.R;
@@ -25,8 +25,8 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
     @BindView(R.id.rv_result)
     public RecyclerView rvResult;
 
-    @BindView(R.id.tv_empty_data)
-    public TextView tvEmptyData;
+    @BindView(R.id.layout_empty)
+    public LinearLayout layoutEmpty;
 
     SearchAdapter adapter = new SearchAdapter();
 
@@ -50,6 +50,9 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
 
     public void queryFolks(String query) {
         if (presenter != null) {
+            if (query == null || query.isEmpty()) {
+                displayEmptyData(true);
+            }
             presenter.queryFolksByName(query);
         }
 
@@ -72,7 +75,7 @@ public class SearchFragment extends BaseFragment implements SearchView, OnClickI
 
     @Override
     public void displayEmptyData(boolean show) {
-        tvEmptyData.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+        layoutEmpty.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override
