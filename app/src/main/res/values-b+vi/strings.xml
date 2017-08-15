@@ -2,8 +2,8 @@
     <string name="app_name">Vieth</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="detail_population">POPULATION</string>
-    <string name="detail_resident_area">LIVING AREA</string>
+    <string name="detail_population">DÂN SỐ</string>
+    <string name="detail_resident_area">NƠI CƯ TRÚ</string>
     <string name="detail_introduction">Introduction</string>
     <string name="detail_more_information">More</string>
     <string name="error_request">Có lỗi xảy ra. Vui lòng kiểm tra lại đường truyền mạng.</string>
@@ -23,5 +23,5 @@
     <string name="bookmark_empty_data">Chưa có dân tộc nào được lưu</string>
     <string name="search_empty_result">Không có dữ liệu nào phù hợp</string>
     <string name="popular_searches">Tìm kiếm phổ biến</string>
-    <string name="bookmark_empty_content">You can save contents for offline viewing</string>
+    <string name="bookmark_empty_content">Bạn có thể lưu để xem lúc ngoại tuyến</string>
 </resources>
