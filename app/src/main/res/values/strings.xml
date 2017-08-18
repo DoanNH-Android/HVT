@@ -24,4 +24,6 @@
     <string name="search_empty_result">No data matching</string>
     <string name="popular_searches">Popular Searches</string>
     <string name="bookmark_empty_content">You can save contents for offline viewing</string>
+    <string name="more_information_content">In Android, working with images(bitmaps) is really difficult as the application goes out of memory(OOM) very frequently. OOM is the biggest nightmare for the Android developers.
+We all Android developers are very fortunate that we live in the world of open-source. I too love open-source as much as you love. I have got everything from Android community, so I always want to give something from my side by sharing my knowledge with all of you.</string>
 </resources>
