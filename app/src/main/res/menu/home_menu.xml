@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/item_more_information"
-        android:title="@string/more_information"
-        app:showAsAction="withText" />
+        android:icon="@drawable/ic_info_outline_black_24px"
+        android:title=""
+        android:actionViewClass="android.widget.ImageButton"
+        app:showAsAction="always" />
 </menu>
