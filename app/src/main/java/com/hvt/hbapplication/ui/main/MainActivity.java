@@ -1,5 +1,6 @@
 package com.hvt.hbapplication.ui.main;
 
+import android.graphics.Typeface;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.hvt.hbapplication.R;
 import com.hvt.hbapplication.ui.BaseActivity;
 import com.hvt.hbapplication.ui.bookmark.BookmarkFragment;
@@ -40,6 +43,9 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     @BindView(R.id.searchView)
     SearchView searchView;
 
+    @BindView(R.id.view_anchor)
+    View anchorView;
+
     PublishSubject<String> searchObservable;
 
     CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -55,14 +61,41 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         toolbar.setTitle(getString(R.string.tab_home));
         bottomBar.setOnTabSelectListener(this::onTabReSelected);
         searchView.setOnQueryTextListener(this);
+
+
     }
 
     boolean inflated = false;
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (inflated) return true;
         getMenuInflater().inflate(R.menu.home_menu, menu);
         inflated = true;
+        TapTargetView.showFor(this,                 // `this` is an Activity
+                TapTarget.forView(anchorView, "This is a target", "We have the best targets, believe me")
+                        // All options below are optional
+                        .outerCircleColor(R.color.colorAccent)      // Specify a color for the outer circle
+                        .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                        .titleTextSize(20)                  // Specify the size (in sp) of the title text
+                        .titleTextColor(R.color.rippelColor)      // Specify the color of the title text
+                        .descriptionTextSize(15)            // Specify the size (in sp) of the description text
+                        .descriptionTextColor(R.color.rippelColor)  // Specify the color of the description text
+                        .textColor(R.color.rippelColor)            // Specify a color for both the title and description text
+                        .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                        .dimColor(R.color.rippelColor)            // If set, will dim behind the view with 30% opacity of the given color
+                        .drawShadow(true)                   // Whether to draw a drop shadow or not
+                        .tintTarget(true)                   // Whether to tint the target view's color
+                        .transparentTarget(true)           // Specify whether the target is transparent (displays the content underneath)
+                        .targetRadius(60),                  // Specify the target radius (in dp)
+                new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);      // This call is optional
+                        view.dismiss(true);
+                    }
+                });
+
         return true;
     }
 

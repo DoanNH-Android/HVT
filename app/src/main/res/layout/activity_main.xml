@@ -11,12 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/toolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             android:paddingTop="24dp">
+
+            <View
+                android:id="@+id/view_anchor"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -32,7 +39,7 @@
                     android:visibility="gone"
                     app:queryHint="Search..." />
             </android.support.v7.widget.Toolbar>
-        </FrameLayout>
+        </RelativeLayout>
 
 
     </android.support.design.widget.AppBarLayout>
