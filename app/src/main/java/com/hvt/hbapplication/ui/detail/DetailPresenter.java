@@ -21,9 +21,14 @@ public class DetailPresenter extends BasePresenter<DetailView> {
             getView().setStateBookmark(folkSaved);
 
             ethnicCommunity = pair.first;
-            getView().displayBasicEthnicData(ethnicCommunity);
-            getView().displayFeatureData(ethnicCommunity.getFolkTranslation().getFeatureTranslations());
-            getView().hideLoading();
+            if (ethnicCommunity != null) {
+                getView().displayBasicEthnicData(ethnicCommunity);
+                getView().displayFeatureData(ethnicCommunity.getFolkTranslation().getFeatureTranslations());
+                getView().hideLoading();
+            } else {
+                //TODO: add text error
+                getView().showError("");
+            }
         }, throwable -> {
             getView().showError(R.string.error_request);
             getView().hideLoading();

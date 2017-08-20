@@ -7,6 +7,10 @@ public class Constant {
 
     public static final String LANG = "language";
 
+    public static final String DATA_ETHNIC_EN = "data_ethnic_en";
+
+    public static final String DATA_ETHNIC_VI = "data_ethnic_vi";
+
     public static final String EN = "en";
 
     public static final String VI = "vi";
