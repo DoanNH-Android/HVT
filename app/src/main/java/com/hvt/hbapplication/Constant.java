@@ -14,4 +14,12 @@ public class Constant {
     public static final String EN = "en";
 
     public static final String VI = "vi";
+
+    public static final String KO = "ko";
+
+    public static final String RU = "ru";
+
+    public static final String ZH = "zh";
+
+    public static final String FR = "fr";
 }

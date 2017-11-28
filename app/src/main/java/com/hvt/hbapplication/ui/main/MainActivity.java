@@ -3,7 +3,6 @@ package com.hvt.hbapplication.ui.main;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -62,24 +61,13 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
 
     }
 
-    boolean inflated = false;
-
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (inflated) return true;
-        getMenuInflater().inflate(R.menu.home_menu, menu);
-        inflated = true;
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.item_more_information) {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-            dialog.setMessage(R.string.more_information_content);
-            dialog.setPositiveButton("Ok", null);
-            dialog.show();
-        }
         return true;
     }
 

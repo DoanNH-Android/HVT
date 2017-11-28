@@ -65,13 +65,34 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
 
     @OnClick(R.id.btn_change_language)
     public void buttonChangeLanguageOnClicked() {
-        String languageSelected;
-        if (wheelLanguage.getCurrentItemPosition() == 1) {
-            languageSelected = Constant.VI;
-        } else {
-            languageSelected = Constant.EN;
+        String languageSelected = Constant.EN;
+        int currentPosition = wheelLanguage.getCurrentItemPosition();
+        switch (currentPosition) {
+            case 0: {
+                languageSelected = Constant.EN;
+                break;
+            }
+            case 1: {
+                languageSelected = Constant.VI;
+                break;
+            }
+            case 2: {
+                languageSelected = Constant.KO;
+                break;
+            }
+            case 3: {
+                languageSelected = Constant.RU;
+                break;
+            }
+            case 4: {
+                languageSelected = Constant.ZH;
+                break;
+            }
+            case 5: {
+                languageSelected = Constant.FR;
+                break;
+            }
         }
-
         presenter.changeLanguage(languageSelected);
     }
 
@@ -85,9 +106,29 @@ public class SettingsFragment extends BaseFragment implements SettingsView {
         List<String> languages = new ArrayList<>();
         languages.add(resources.getString(R.string.settings_english));
         languages.add(resources.getString(R.string.settings_vietnamese));
+        languages.add(resources.getString(R.string.settings_korean));
+        languages.add(resources.getString(R.string.settings_russian));
+        languages.add(resources.getString(R.string.settings_chinese));
+        languages.add(resources.getString(R.string.settings_france));
 
         wheelLanguage.setData(languages);
-        wheelLanguage.setSelectedItemPosition(newLang.equalsIgnoreCase(Constant.VI) ? 1 : 0);
+
+        int selectedPosition = 0;
+
+        if (newLang.equalsIgnoreCase(Constant.EN)) {
+            selectedPosition = 0;
+        } else if (newLang.equalsIgnoreCase(Constant.VI)) {
+            selectedPosition = 1;
+        } else if (newLang.equalsIgnoreCase(Constant.KO)) {
+            selectedPosition = 2;
+        } else if (newLang.equalsIgnoreCase(Constant.RU)) {
+            selectedPosition = 3;
+        } else if (newLang.equalsIgnoreCase(Constant.ZH)) {
+            selectedPosition = 4;
+        } else if (newLang.equalsIgnoreCase(Constant.FR)) {
+            selectedPosition = 5;
+        }
+        wheelLanguage.setSelectedItemPosition(selectedPosition);
     }
 
     @Override

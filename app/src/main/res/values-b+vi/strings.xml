@@ -14,6 +14,10 @@
     <string name="bookmark_load_error">Đã xảy ra lỗi trong quá trình hiển thị dữ liệu!</string>
     <string name="settings_vietnamese">Tiếng Việt</string>
     <string name="settings_english">Tiếng Anh</string>
+    <string name="settings_korean">Tiếng Hàn</string>
+    <string name="settings_russian">Tiếng Nga</string>
+    <string name="settings_chinese">Tiếng Trung</string>
+    <string name="settings_france">Tiếng Pháp</string>
     <string name="settings_button_change_language">Thay đổi ngôn ngữ</string>
     <string name="settings_choose_language">Chọn ngôn ngữ</string>
     <string name="tab_home">Home</string>
@@ -24,7 +28,5 @@
     <string name="search_empty_result">Không có dữ liệu nào phù hợp</string>
     <string name="popular_searches">Tìm kiếm phổ biến</string>
     <string name="bookmark_empty_content">Bạn có thể lưu để xem lúc ngoại tuyến</string>
-    <string name="more_information_content">In Android, working with images(bitmaps) is really difficult as the application goes out of memory(OOM) very frequently. OOM is the biggest nightmare for the Android developers.
-We all Android developers are very fortunate that we live in the world of open-source. I too love open-source as much as you love. I have got everything from Android community, so I always want to give something from my side by sharing my knowledge with all of you.</string>
     <string name="more_information">Thông tin thêm</string>
 </resources>
