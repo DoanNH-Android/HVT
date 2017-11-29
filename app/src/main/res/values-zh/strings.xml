@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Vieth</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+     <string name="detail_population">人口 </string>
+     <string name="detail_resident_area">居住地</string>
+     <string name="detail_introduction">Introduction</string>
+     <string name="detail_more_information">More</string> 
+    <string name="error_request">發生錯誤。請檢查您的網絡連接</string> <string name="detail_save_success">保存成功</string> <string name="detail_save_failure">保存失敗。請再試一次</string> <string name="detail_unsave_success">保存成功</string> <string name="detail_unsave_failure">保存失敗。請再試一次</string> <string name="bookmark_load_error">顯示數據時出錯</string> <string name="settings_vietnamese">越南</string> <string name="settings_english">英語</string> <string name="settings_korean">朝鮮的</string> <string name="settings_russian">俄</string> <string name="settings_chinese">中國</string> <string name="settings_france">法國</string> <string name="settings_button_change_language">更改語言</string> <string name="settings_choose_language">選擇語言</string> <string name="tab_home">Home</string> <string name="tab_search">Search</string> <string name="tab_bookmark">Bookmarks</string> <string name="tab_setting">Setting</string> <string name="bookmark_empty_data">沒有一個國家得救</string> <string name="search_empty_result">沒有數據可用</string> <string name="popular_searches">熱門搜索</string> <string name="bookmark_empty_content">您可以保存以供離線查看</string> <string name="more_information">更多信息</string>
 </resources>
